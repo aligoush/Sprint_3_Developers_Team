@@ -1,5 +1,6 @@
 # Virtual Escape Room Management Application
 
+
 This project is a Virtual Escape Room management application designed to provide an engaging and immersive adventure experience. Users can explore themed rooms, solve challenging puzzles, and receive certificates for their achievements. The system uses MySQL for persistence and provides a variety of management features to enhance gameplay and track progress.
 
 ## Features
