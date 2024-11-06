@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2024-11-05 22:36
+-- Generated: 2024-11-06 11:32
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -106,6 +106,7 @@ CREATE TABLE IF NOT EXISTS `EscapeRoom`.`items` (
   `name_item` VARCHAR(45) NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
   `id_room` INT(11) NULL DEFAULT NULL,
+  `type` ENUM("clue", "decoration") NOT NULL,
   PRIMARY KEY (`id_item`),
   INDEX `fk_items_room1_idx` (`id_room` ASC) VISIBLE,
   CONSTRAINT `fk_items_room1`
