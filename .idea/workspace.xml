@@ -4,77 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08254954-1aa7-4e2d-9b7e-c2b21045ac07" name="Changes" comment="" />
+    <list default="true" id="0f8dabf6-ab7e-47a8-8d20-95467e955dfd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Clue.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Clue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Decoration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Decoration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Room.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "paumaneja"
-  }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/aligoush/Sprint_3_Developers_Team.git",
-    "accountId": "e0501710-563d-44d1-85cd-233f8194cfb0"
-  }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
-  <component name="ProjectId" id="2oQiNIYmQXi7jR0YABLWCzs8RtG" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/paumaneja/Documents/GitHub/Curs Java IT Academy/SPRINT03/Sprint_3_Developers_Team"
+    "git-widget-placeholder": "dev"
   }
 }]]></component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="08254954-1aa7-4e2d-9b7e-c2b21045ac07" name="Changes" comment="" />
-      <created>1730808158263</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1730808158263</updated>
-    </task>
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
+    <option name="RECENT_FILTERS">
       <map>
-        <entry key="MAIN">
+        <entry key="Branch">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="dev" />
+                </option>
+              </RecentGroup>
+            </list>
           </value>
         </entry>
       </map>
