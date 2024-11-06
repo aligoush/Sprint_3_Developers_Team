@@ -5,25 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8dabf6-ab7e-47a8-8d20-95467e955dfd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Clue.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Clue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Decoration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Decoration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Room.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/DBConnection.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/utils/InputUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "git-widget-placeholder": "dev"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <servers />
   </component>
