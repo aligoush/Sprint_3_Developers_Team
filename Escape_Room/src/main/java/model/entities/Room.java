@@ -6,16 +6,20 @@ import java.util.ArrayList;
 public class Room {
 
     private String name;
-
     private int difficulty;
-    private ArrayList<Item> elements;
+    private double price;
+    private String thematic;
+    private ArrayList<Item> items;
 
-    public Room(String name, int difficulty, ArrayList<Item> elements) {
+    public Room(String name,String thematic, int difficulty, double price ) {
 
 
         this.name = name;
+        this.thematic = thematic;
         this.difficulty = difficulty;
-        this.elements = elements;
+        this.price = price;
+
+
     }
 
     public String getName() {
