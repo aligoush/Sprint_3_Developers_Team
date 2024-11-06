@@ -7,38 +7,39 @@ public class InputUtils {
 
     private static Scanner input = new Scanner(System.in);
 
-    public static boolean readBoolean(String message){
+    public static boolean readBoolean(String message) {
         boolean data = true;
         boolean dataOk = false;
         String answer = "";
 
-        do{
-            try{
+        do {
+            try {
                 System.out.println(message);
                 answer = input.nextLine();
-                if(answer.equalsIgnoreCase("yes")){
+                if (answer.equalsIgnoreCase("yes")) {
                     dataOk = true;
                     data = false;
-                }else if(answer.equalsIgnoreCase("no")){
+                } else if (answer.equalsIgnoreCase("no")) {
                     dataOk = true;
                 }
             } catch (Exception e) {
                 System.err.println("Format error. Please, try again. Type only Yes or No.");
             }
 
-        }while(!dataOk);
+        } while (!dataOk);
         return data;
     }
+
     public static int readInt(String message) {
         int data = 0;
         boolean dataOk = false;
 
-        while(!dataOk) {
+        while (!dataOk) {
             try {
                 System.out.println(message);
                 data = input.nextInt();
                 dataOk = true;
-            } catch(InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 System.err.println("Format error. Please, try again.");
                 input.nextLine();
             }
@@ -51,9 +52,9 @@ public class InputUtils {
         String data = "";
         boolean dataOk = false;
 
-        while(!dataOk) {
+        while (!dataOk) {
             try {
-                input.nextLine();
+
                 System.out.println(message);
                 data = input.nextLine();
                 dataOk = true;
@@ -70,12 +71,12 @@ public class InputUtils {
         double data = 0d;
         boolean dataOk = false;
 
-        while(!dataOk) {
+        while (!dataOk) {
             try {
                 System.out.println(message);
                 data = input.nextDouble();
                 dataOk = true;
-            } catch(InputMismatchException e) {
+            } catch (InputMismatchException e) {
                 System.err.println("Format error. Please, try again.");
                 input.nextLine();
             }
@@ -83,4 +84,5 @@ public class InputUtils {
         return data;
 
     }
+
 }

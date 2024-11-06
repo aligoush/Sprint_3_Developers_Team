@@ -30,7 +30,7 @@ public class DBConnection {
             System.err.println("Error while connecting to the DB.");
         }
         return connection;
-        
+
     }
 
     public PreparedStatement getPreparedStatement(){
@@ -80,5 +80,3 @@ public class DBConnection {
 
 
 }
-
-

@@ -1,19 +1,21 @@
-package services;
+package view;
+
+import service.RoomService;
 
 import java.util.Scanner;
 
 public class EscapeRoomMenu {
 
 
-    public class Menu {
 
-        public void iniciarMenu() {
+
+        public void startMenu() {
 
             boolean exit = false;
 
             do{
                 switch(menu()){
-                    case 1: method1();
+                    case 1: createRoom();
                         break;
                     case 2: method2();
                         break;
@@ -49,8 +51,12 @@ public class EscapeRoomMenu {
             return option;
         }
 
-        public static void method1(){
-            System.out.println("Method 1");
+        public static void createRoom(){
+            RoomService holi = new RoomService();
+
+            holi.createRoom();
+
+
         }
 
         public static void method2(){
@@ -63,4 +69,4 @@ public class EscapeRoomMenu {
 
 
     }
-}
+
