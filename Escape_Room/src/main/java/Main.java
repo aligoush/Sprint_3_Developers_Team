@@ -1,11 +1,26 @@
-import view.EscapeRoomMenu;
+import dao.EscapeRoomDAOImpl;
+import dao.RoomDAOImpl;
+import model.entities.EscapeRoom;
+import model.entities.Room;
 
 public class Main {
     public static void main(String[] args) {
-        EscapeRoomMenu holi2 = new EscapeRoomMenu();
+        EscapeRoom escapeRoom = new EscapeRoom(1,"Adventures");
 
-        holi2.startMenu();
+        //holi2.startMenu();
+        EscapeRoomDAOImpl er = new EscapeRoomDAOImpl();
+        er.add(escapeRoom);
+        System.out.println("Escape Room creado");
 
+        RoomDAOImpl roomDao = new RoomDAOImpl();
+        Room newRoom = new Room(0, "Scary Room", "Horror", 3, 4,escapeRoom.getIdEscape());
 
+        roomDao.add(newRoom);
+        System.out.println("Room insertado" + newRoom);
+
+        System.out.println("List of rooms");
+        for(Room room: roomDao.showAll()){
+            System.out.println(room);
+        }
     }
 }

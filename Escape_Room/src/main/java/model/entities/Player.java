@@ -1,4 +1,4 @@
-package src.main.java.model.entities;
+package model.entities;
 
 public class Player {
 

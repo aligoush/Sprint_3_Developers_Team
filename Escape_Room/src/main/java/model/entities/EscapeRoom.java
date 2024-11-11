@@ -1,9 +1,14 @@
-package src.main.java.model.entities;
+package model.entities;
 
 public class EscapeRoom {
 
     private int idEscape;
     private String name;
+
+    public EscapeRoom(int idEscape, String name) {
+        this.idEscape = idEscape;
+        this.name = name;
+    }
 
     public int getIdEscape() {
         return idEscape;

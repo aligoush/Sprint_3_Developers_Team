@@ -2,21 +2,14 @@ package dao;
 
 import model.entities.Room;
 import utils.InputUtils;
-import dao.DBConnection;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoomDAOImpl extends DBConnection implements RoomDAO {
-    private DBConnection connection;
+public class RoomDAOImpl implements RoomDAO {
 
-    public RoomDAOImpl(Connection connection){
-        this.connection = connection;
-    }
 
     /*
     @Override
@@ -29,7 +22,7 @@ public class RoomDAOImpl extends DBConnection implements RoomDAO {
 
         roomId = InputUtils.readInt("Room id: ");
 
-        try (PreparedStatement preparedStatement = connection.getConnection().prepareStatement(sql)){
+        try (PreparedStatement = connection.getConnection().prepareStatement(sql)){
             preparedStatement.setInt(1, roomId);
             rs = preparedStatement.executeQuery();
 
@@ -46,32 +39,41 @@ public class RoomDAOImpl extends DBConnection implements RoomDAO {
     @Override
     public List<Room> showAll() {
         List<Room> rooms = new ArrayList<>();
-        DBConnection connection = new DBConnection();
-        String sql = "SELECT * FROM room";
-        try (PreparedStatement prepStmt = connection.getConnection().prepareStatement(sql)){
-            ResultSet rs = prepStmt.executeQuery();
+        String query = "SELECT * FROM rooms";
+        try (Connection connection = MySQLConnection.getInstance().getConnection();
+             Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
             while (rs.next()){
-                Room room = new Room();
-                room.setName(rs.getString("name"));
-                //lo mismo para el resto de campos
-                rooms.add(room);
+                rooms.add(new Room(rs.getInt("id_room"), rs.getString("name"),
+                        rs.getString("theme"), rs.getInt("difficulty_level"), rs.getDouble("base_price"), rs.getInt("id_escape_room")));
             }
         } catch (SQLException e){
             System.out.println("Error extracting data: " + e.getMessage());
         }
-
         return rooms;
     }
 
     @Override
     public void add(Room room) {
-        DBConnection connection = new DBConnection();
-        String sql = "INSERT INTO room (id, name,.....) VALUES (?,?,....)";
-        try (PreparedStatement prepStmt = connection.getConnection().prepareStatement(sql)){
-            prepStmt.setInt(1, room.getId);
-            //lo mismo para el resto de campos
-            prepStmt.executeUpdate();
-            System.out.println("Room created");
+        String query = "INSERT INTO rooms (name, theme, difficulty_level, base_price, id_escape_room) VALUES (?,?,?,?,?)";
+        try (Connection conn = MySQLConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query,Statement.RETURN_GENERATED_KEYS)){
+
+            stmt.setString(1,room.getName());
+            stmt.setString(2,room.getThematic());
+            stmt.setInt(3,room.getDifficulty());
+            stmt.setDouble(4,room.getBase_price());
+            stmt.setInt(5, room.getId_escape_room());
+
+            stmt.executeUpdate();
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int generatedId = generatedKeys.getInt(1);
+                    room.setId(generatedId);
+                    System.out.println("Room created with ID: " + generatedId);
+                }
+            }
         } catch (SQLException e) {
             System.out.println("Error inserting the room into DB. " + e.getMessage());
         }
@@ -79,12 +81,12 @@ public class RoomDAOImpl extends DBConnection implements RoomDAO {
 
     @Override
     public void update(Room room) {
-        DBConnection connection = new DBConnection();
-        //String sql = "UPDATE room SET id = ?, name = ?.... WHERE id = ?";
-        try (PreparedStatement prepStmt = connection.getConnection().prepareStatement(sql)){
-            prepStmt.setString(1, room.getId);
+        String query = "UPDATE rooms SET id = ?, name = ?.... WHERE id = ?";
+        try (Connection conn = MySQLConnection.getInstance().getConnection();
+        PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setString(1, room.getName());
             //lo mismo para el resto de campos
-            prepStmt.executeUpdate();
+            stmt .executeUpdate();
             System.out.println("Room updated");
         } catch (SQLException e) {
             System.out.println("Error updating the room into DB. " + e.getMessage());
@@ -93,14 +95,16 @@ public class RoomDAOImpl extends DBConnection implements RoomDAO {
 
     @Override
     public void remove(int id) {
-        DBConnection connection = new DBConnection();
-        String sql = "DELETE FROM room WHERE id = ?";
-        try (PreparedSatement prepStmt = connection.getConnection().prepareStatement(sql)){
-            prepStmt.setInt(1, id);
-            prepStmt.executeUpdate();
+        String query = "DELETE FROM rooms WHERE id = ?";
+        try (Connection conn = MySQLConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
             System.out.println("Room removed.");
-        } catch (SQLExecption e) {
-            System.out.println("Error removing romm from DB. " + e.getMessage);
+        } catch (SQLException e) {
+            System.out.println("Error removing romm from DB. " + e.getMessage());
         }
     }
+
+
 }

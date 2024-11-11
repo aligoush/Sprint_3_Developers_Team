@@ -1,13 +1,8 @@
 package view;
 
-import service.RoomService;
-
 import java.util.Scanner;
 
-public class EscapeRoomMenu {
-
-
-
+public class Menu {
 
         public void startMenu() {
 
@@ -52,10 +47,10 @@ public class EscapeRoomMenu {
         }
 
         public static void createRoom(){
-            RoomService holi = new RoomService();
+            /*RoomService holi = new RoomService();
 
             holi.createRoom();
-
+*/
 
         }
 

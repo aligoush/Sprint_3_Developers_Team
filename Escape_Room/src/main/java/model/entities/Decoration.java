@@ -44,11 +44,11 @@ public class Decoration extends Item {
 
     @Override
     public String toString() {
-        return "Decor{" +
-                "Precio: " +
-                ", Nombre: '" + name + '\'' +
-                ", Materal: " + material + '\'' +
-                ", Temática: " + thematic + '\''
+        return "Decoration{" +
+                "Price: " +
+                ", Name: '" + name + '\'' +
+                ", Material: " + material + '\'' +
+                ", Thematic: " + thematic + '\''
                 ;
     }
 }
