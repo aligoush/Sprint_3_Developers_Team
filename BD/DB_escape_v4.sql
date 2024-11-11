@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2024-11-06 11:32
+-- Generated: 2024-11-11 17:41
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -21,7 +21,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 CREATE TABLE IF NOT EXISTS `EscapeRoom`.`rooms` (
   `id_room` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `difficulty_level` INT(11) NOT NULL,
+  `difficulty` INT(11) NOT NULL,
   `theme` VARCHAR(45) NOT NULL,
   `base_price` DECIMAL(10,2) NOT NULL,
   `id_escape_room` INT(11) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `EscapeRoom`.`rooms` (
     FOREIGN KEY (`id_escape_room`)
     REFERENCES `EscapeRoom`.`escape_room` (`id_escape_room`)
     ON DELETE CASCADE
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `EscapeRoom`.`certificates` (
     FOREIGN KEY (`id_user`)
     REFERENCES `EscapeRoom`.`players` (`id_player`)
     ON DELETE CASCADE
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `EscapeRoom`.`tickets` (
     FOREIGN KEY (`id_player`)
     REFERENCES `EscapeRoom`.`players` (`id_player`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
@@ -128,12 +128,12 @@ CREATE TABLE IF NOT EXISTS `EscapeRoom`.`player_is_playing` (
     FOREIGN KEY (`id_player`)
     REFERENCES `EscapeRoom`.`players` (`id_player`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_player_has_room_room1`
     FOREIGN KEY (`id_room`)
     REFERENCES `EscapeRoom`.`rooms` (`id_room`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
