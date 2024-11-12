@@ -4,26 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f8dabf6-ab7e-47a8-8d20-95467e955dfd" name="Changes" comment="update DB, RoomDAO,RoomDAOImpl">
-      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/controllers/EscapeRoomController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/EscapeRoomManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/ItemManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/PlayerManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/RoomManager.java" afterDir="false" />
+    <list default="true" id="0f8dabf6-ab7e-47a8-8d20-95467e955dfd" name="Changes" comment="add ItemManager, update ItemDao">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/ItemDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/ItemDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/ItemDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/ItemDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/RoomDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/RoomDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/RoomDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/RoomDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Clue.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Clue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Decoration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Decoration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/EscapeRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/EscapeRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/utils/InputUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/utils/InputUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/view/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/target/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BD/DB_escape_v4.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/BD/DB_escape_v4.mwb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BD/DB_escape_v4.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/BD/DB_escape_v4.mwb.bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BD/DB_escape_v4.sql" beforeDir="false" afterPath="$PROJECT_DIR$/BD/DB_escape_v4.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/management/ItemManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/ItemManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +37,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Debug",
+    "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "dev",
     "kotlin-language-version-configured": "true",
@@ -108,7 +94,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731406548147</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add ItemManager, update ItemDao">
+      <option name="closed" value="true" />
+      <created>1731446643294</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1731446643295</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -142,7 +136,8 @@
     <MESSAGE value="update Room, RoomDAO and Implementations, connections to MySQL DB" />
     <MESSAGE value="update DB" />
     <MESSAGE value="update DB, RoomDAO,RoomDAOImpl" />
-    <option name="LAST_COMMIT_MESSAGE" value="update DB, RoomDAO,RoomDAOImpl" />
+    <MESSAGE value="add ItemManager, update ItemDao" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ItemManager, update ItemDao" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -153,8 +148,8 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/Escape_Room/src/main/java/management/ItemManager.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="6" />
+          <line>28</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

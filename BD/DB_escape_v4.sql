@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2024-11-12 11:10
+-- Generated: 2024-11-12 23:02
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -102,7 +102,7 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `EscapeRoom`.`items` (
-  `id_item` INT(11) NOT NULL,
+  `id_item` INT(11) NOT NULL AUTO_INCREMENT,
   `name_item` VARCHAR(45) NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
   `id_room` INT(11) NULL DEFAULT NULL,
