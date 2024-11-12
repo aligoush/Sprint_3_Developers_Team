@@ -1,25 +1,41 @@
 package model.entities;
 
-    
+
+import enums.Thematic;
+import enums.Type;
 
 public class Clue extends Item {
 
-    private String thematic;
+    private Thematic thematic;
+    private String details;
 
-    private String name;
-
-    public Clue(float price, String thematic, String name) {
-        super(price);
-
+    public Clue(int id, String name, float price, int idRoom, Type type, Thematic thematic, String details) {
+        super(id, name, price, idRoom, type);
         this.thematic = thematic;
-        this.name = name;
+        this.details = details;
     }
 
-    public String getThematic() {
+    public Thematic getThematic() {
         return thematic;
     }
 
-    public void setThematic(String thematic) {
+    public void setThematic(Thematic thematic) {
         this.thematic = thematic;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    @Override
+    public String toString() {
+        return "Clue{" +
+                "thematic=" + thematic +
+                ", details='" + details + '\'' +
+                '}';
     }
 }

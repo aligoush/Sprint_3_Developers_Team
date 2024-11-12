@@ -7,27 +7,27 @@ public class Room {
     private int id;
     private String name;
     private int difficulty;
-    private double base_price;
+    private double basePrice;
     private String thematic;
-    private final int id_escape_room;
+    private final int idEscapeRoom;
     private ArrayList<Item> items;
 
-    public Room(int id, String name, String thematic, int difficulty, double base_price, int id_escape_room ) {
+    public Room(int id, String name, String thematic, int difficulty, double basePrice, int idEscapeRoom) {
 
         this.id = id;
         this.name = name;
         this.thematic = thematic;
         this.difficulty = difficulty;
-        this.base_price = base_price;
-        this.id_escape_room = id_escape_room;
+        this.basePrice = basePrice;
+        this.idEscapeRoom = idEscapeRoom;
     }
 
     public double getBase_price() {
-        return base_price;
+        return basePrice;
     }
 
     public void setBase_price(double base_price) {
-        this.base_price = base_price;
+        this.basePrice = base_price;
     }
 
     public String getThematic() {
@@ -62,8 +62,8 @@ public class Room {
         this.difficulty = difficulty;
     }
 
-    public int getId_escape_room() {
-        return id_escape_room;
+    public int getIdEscapeRoom() {
+        return idEscapeRoom;
     }
 
     @Override
@@ -72,7 +72,7 @@ public class Room {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", difficulty=" + difficulty +
-                ", base_price=" + base_price +
+                ", base_price=" + basePrice +
                 ", thematic='" + thematic + '\'' +
                 '}';
     }

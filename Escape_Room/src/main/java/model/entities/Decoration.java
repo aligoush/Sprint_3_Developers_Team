@@ -1,55 +1,31 @@
 package model.entities;
 
 
+import enums.MaterialType;
+import enums.Type;
+
 public class Decoration extends Item {
 
+    private MaterialType material;
 
-    private String name;
-    private String material;
-    private String thematic;
-
-    public Decoration(float price, String name, String material, String thematic) {
-        super(price);
-        this.name = name;
+    public Decoration(int id, String name, float price, int idRoom, Type type, MaterialType material) {
+        super(id, name, price, idRoom, type);
         this.material = material;
-        this.thematic = thematic;
-
     }
 
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName() {
-        this.name = name;
-    }
-
-    public String getMaterial() {
+    public MaterialType getMaterial() {
         return material;
-
     }
 
-    public void setMaterial() {
+    public void setMaterial(MaterialType material) {
         this.material = material;
-    }
-
-    public String getThematic() {
-        return thematic;
-    }
-
-    public void setThematic() {
-        this.thematic = thematic;
     }
 
     @Override
     public String toString() {
         return "Decoration{" +
-                "Price: " +
-                ", Name: '" + name + '\'' +
-                ", Material: " + material + '\'' +
-                ", Thematic: " + thematic + '\''
-                ;
+                "material=" + material +
+                '}';
     }
 }
 

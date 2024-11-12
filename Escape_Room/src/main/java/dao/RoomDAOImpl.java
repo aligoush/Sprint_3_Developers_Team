@@ -1,8 +1,6 @@
 package dao;
 
 import model.entities.Room;
-import utils.InputUtils;
-
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -44,11 +42,11 @@ public class RoomDAOImpl implements RoomDAO {
              Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
-            while (rs.next()){
+            while (rs.next()) {
                 rooms.add(new Room(rs.getInt("id_room"), rs.getString("name"),
-                        rs.getString("theme"), rs.getInt("difficulty_level"), rs.getDouble("base_price"), rs.getInt("id_escape_room")));
+                        rs.getString("theme"), rs.getInt("difficulty"), rs.getDouble("base_price"), rs.getInt("id_escape_room")));
             }
-        } catch (SQLException e){
+        } catch (SQLException e) {
             System.out.println("Error extracting data: " + e.getMessage());
         }
         return rooms;
@@ -56,15 +54,15 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public void add(Room room) {
-        String query = "INSERT INTO rooms (name, theme, difficulty_level, base_price, id_escape_room) VALUES (?,?,?,?,?)";
+        String query = "INSERT INTO rooms (name, theme, difficulty, base_price, id_escape_room) VALUES (?,?,?,?,?)";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query,Statement.RETURN_GENERATED_KEYS)){
+             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
-            stmt.setString(1,room.getName());
-            stmt.setString(2,room.getThematic());
-            stmt.setInt(3,room.getDifficulty());
-            stmt.setDouble(4,room.getBase_price());
-            stmt.setInt(5, room.getId_escape_room());
+            stmt.setString(1, room.getName());
+            stmt.setString(2, room.getThematic());
+            stmt.setInt(3, room.getDifficulty());
+            stmt.setDouble(4, room.getBase_price());
+            stmt.setInt(5, room.getIdEscapeRoom());
 
             stmt.executeUpdate();
             try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
@@ -79,25 +77,27 @@ public class RoomDAOImpl implements RoomDAO {
         }
     }
 
-    @Override
-    public void update(Room room) {
-        String query = "UPDATE rooms SET id = ?, name = ?.... WHERE id = ?";
-        try (Connection conn = MySQLConnection.getInstance().getConnection();
-        PreparedStatement stmt = conn.prepareStatement(query)){
-            stmt.setString(1, room.getName());
-            //lo mismo para el resto de campos
-            stmt .executeUpdate();
-            System.out.println("Room updated");
-        } catch (SQLException e) {
-            System.out.println("Error updating the room into DB. " + e.getMessage());
-        }
-    }
+    /*
+        @Override
+        public void update(Room room) {
+            String query = "UPDATE rooms SET id = ?, name = ?.... WHERE id = ?";
+            try (Connection conn = MySQLConnection.getInstance().getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query)){
+                stmt.setString(1, room.getName());
 
+                stmt .executeUpdate();
+                System.out.println("Room updated");
+            } catch (SQLException e) {
+                System.out.println("Error updating the room into DB. " + e.getMessage());
+            }
+        }
+    */
     @Override
-    public void remove(int id) {
-        String query = "DELETE FROM rooms WHERE id = ?";
+    public void delete(int id) {
+        String query = "DELETE FROM rooms WHERE id_room = ?";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)){
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
             stmt.setInt(1, id);
             stmt.executeUpdate();
             System.out.println("Room removed.");
@@ -105,6 +105,4 @@ public class RoomDAOImpl implements RoomDAO {
             System.out.println("Error removing romm from DB. " + e.getMessage());
         }
     }
-
-
 }

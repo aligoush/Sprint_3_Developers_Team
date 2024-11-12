@@ -1,7 +1,6 @@
 package dao;
 
 import model.entities.EscapeRoom;
-import model.entities.Room;
 
 import java.sql.*;
 
@@ -11,15 +10,15 @@ public class EscapeRoomDAOImpl implements EscapeRoomDAO {
     public void add(EscapeRoom escapeRoom) {
         String query = "INSERT INTO escape_room (name) VALUES (?)";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)){
+             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
-            stmt.setString(1,escapeRoom.getName());
+            stmt.setString(1, escapeRoom.getName());
 
             stmt.executeUpdate();
             try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     int generatedId = generatedKeys.getInt(1);
-                    escapeRoom.setIdEscape(generatedId);
+                    escapeRoom.setIdEscapeRoom(generatedId);
                     System.out.println("Escape Room created with ID: " + generatedId);
                 }
             }

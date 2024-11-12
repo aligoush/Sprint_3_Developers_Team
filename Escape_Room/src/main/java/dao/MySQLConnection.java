@@ -17,24 +17,24 @@ public class MySQLConnection {
     private static final String USER = "root";
     private String password;
 
-    private MySQLConnection(){
+    private MySQLConnection() {
         try {
             this.password = readPassword();
             connection = DriverManager.getConnection(URL, USER, password);
         } catch (SQLException | IOException e) {
-            if(e instanceof SQLException){
+            if (e instanceof SQLException) {
                 System.err.println("Error while connecting to the DB.");
             }
-            if(e instanceof IOException){
+            if (e instanceof IOException) {
                 System.err.println("Error. Could not read the file.");
-            } else{
+            } else {
                 System.out.println("Couldnt connect");
             }
         }
     }
 
     public static MySQLConnection getInstance() throws SQLException {
-        if(instance == null || instance.getConnection().isClosed()){
+        if (instance == null || instance.getConnection().isClosed()) {
             instance = new MySQLConnection();
         }
         return instance;
@@ -44,7 +44,7 @@ public class MySQLConnection {
         return connection;
     }
 
-    public PreparedStatement getPreparedStatement(){
+    public PreparedStatement getPreparedStatement() {
         return preparedStatement;
     }
 

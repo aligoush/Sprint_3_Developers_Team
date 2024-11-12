@@ -2,20 +2,20 @@ package model.entities;
 
 public class EscapeRoom {
 
-    private int idEscape;
+    private int idEscapeRoom;
     private String name;
 
-    public EscapeRoom(int idEscape, String name) {
-        this.idEscape = idEscape;
+    public EscapeRoom(int idEscapeRoom, String name) {
+        this.idEscapeRoom = idEscapeRoom;
         this.name = name;
     }
 
-    public int getIdEscape() {
-        return idEscape;
+    public int getIdEscapeRoom() {
+        return idEscapeRoom;
     }
 
-    public void setIdEscape(int idEscape) {
-        this.idEscape = idEscape;
+    public void setIdEscapeRoom(int idEscapeRoom) {
+        this.idEscapeRoom = idEscapeRoom;
     }
 
     public String getName() {
@@ -29,7 +29,7 @@ public class EscapeRoom {
     @Override
     public String toString() {
         return "EscapeRoom{" +
-                "idEscape=" + idEscape +
+                "idEscape=" + idEscapeRoom +
                 ", name='" + name + '\'' +
                 '}';
     }

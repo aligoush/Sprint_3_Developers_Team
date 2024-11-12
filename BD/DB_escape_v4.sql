@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2024-11-11 17:41
+-- Generated: 2024-11-12 11:10
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `EscapeRoom`.`rooms` (
   `id_room` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `difficulty` INT(11) NOT NULL,
-  `theme` VARCHAR(45) NOT NULL,
+  `thematic` ENUM("HALLOWEEN", "SCIENCE_FICTION", "CHRISTMAS", "JURASSIC_PARK") NOT NULL,
   `base_price` DECIMAL(10,2) NOT NULL,
   `id_escape_room` INT(11) NOT NULL,
   PRIMARY KEY (`id_room`),
@@ -37,7 +37,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `EscapeRoom`.`clues` (
   `id_item` INT(11) NOT NULL,
-  `theme` VARCHAR(45) NOT NULL,
+  `thematic` ENUM("HALLOWEEN", "SCIENCE_FICTION", "CHRISTMAS", "JURASSIC_PARK") NOT NULL,
   `details` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_item`),
   INDEX `fk_clues_items1_idx` (`id_item` ASC) VISIBLE,
@@ -51,7 +51,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `EscapeRoom`.`decorations` (
   `id_item` INT(11) NOT NULL,
-  `material_type` VARCHAR(45) NOT NULL,
+  `material_type` ENUM("WOOD", " PLASTIC", "METALLIC", "CRYSTAL") NOT NULL,
   PRIMARY KEY (`id_item`),
   INDEX `fk_decorations_items1_idx` (`id_item` ASC) VISIBLE,
   CONSTRAINT `fk_decorations_items1`
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `EscapeRoom`.`items` (
   `name_item` VARCHAR(45) NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
   `id_room` INT(11) NULL DEFAULT NULL,
-  `type` ENUM("clue", "decoration") NOT NULL,
+  `type` ENUM("CLUE", "DECORATION") NOT NULL,
   PRIMARY KEY (`id_item`),
   INDEX `fk_items_room1_idx` (`id_room` ASC) VISIBLE,
   CONSTRAINT `fk_items_room1`

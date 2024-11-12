@@ -10,6 +10,7 @@ public class Player {
     public int getIdPlayer() {
         return idPlayer;
     }
+
     public String getName() {
         return name;
     }
