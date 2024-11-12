@@ -1,5 +1,6 @@
 package dao;
 
+import enums.Thematic;
 import model.entities.Room;
 
 import java.sql.*;
@@ -44,7 +45,7 @@ public class RoomDAOImpl implements RoomDAO {
 
             while (rs.next()) {
                 rooms.add(new Room(rs.getInt("id_room"), rs.getString("name"),
-                        rs.getString("theme"), rs.getInt("difficulty"), rs.getDouble("base_price"), rs.getInt("id_escape_room")));
+                        Thematic.valueOf(rs.getString("thematic").toUpperCase()), rs.getInt("difficulty"), rs.getDouble("base_price"), rs.getInt("id_escape_room")));
             }
         } catch (SQLException e) {
             System.out.println("Error extracting data: " + e.getMessage());
@@ -53,15 +54,15 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
-    public void add(Room room) {
-        String query = "INSERT INTO rooms (name, theme, difficulty, base_price, id_escape_room) VALUES (?,?,?,?,?)";
+    public void createRoom(Room room) {
+        String query = "INSERT INTO rooms (name, thematic, difficulty, base_price, id_escape_room) VALUES (?,?,?,?,?)";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setString(1, room.getName());
-            stmt.setString(2, room.getThematic());
+            stmt.setString(2, room.getThematic().name());
             stmt.setInt(3, room.getDifficulty());
-            stmt.setDouble(4, room.getBase_price());
+            stmt.setDouble(4, room.getBasePrice());
             stmt.setInt(5, room.getIdEscapeRoom());
 
             stmt.executeUpdate();

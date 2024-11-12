@@ -1,6 +1,8 @@
 
 package model.entities;
 
+import enums.Thematic;
+
 import java.util.ArrayList;
 
 public class Room {
@@ -8,11 +10,11 @@ public class Room {
     private String name;
     private int difficulty;
     private double basePrice;
-    private String thematic;
+    private Thematic thematic;
     private final int idEscapeRoom;
     private ArrayList<Item> items;
 
-    public Room(int id, String name, String thematic, int difficulty, double basePrice, int idEscapeRoom) {
+    public Room(int id, String name, Thematic thematic, int difficulty, double basePrice, int idEscapeRoom) {
 
         this.id = id;
         this.name = name;
@@ -22,19 +24,19 @@ public class Room {
         this.idEscapeRoom = idEscapeRoom;
     }
 
-    public double getBase_price() {
+    public double getBasePrice() {
         return basePrice;
     }
 
-    public void setBase_price(double base_price) {
-        this.basePrice = base_price;
+    public void setBasePrice(double basePrice) {
+        this.basePrice = basePrice;
     }
 
-    public String getThematic() {
+    public Thematic getThematic() {
         return thematic;
     }
 
-    public void setThematic(String thematic) {
+    public void setThematic(Thematic thematic) {
         this.thematic = thematic;
     }
 

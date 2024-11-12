@@ -8,7 +8,7 @@ public interface RoomDAO {
     //Room findById(int id);
     List<Room> showAll();
 
-    void add(Room room);
+    void createRoom(Room room);
 
     //void update(Room room);
     void delete(int id);

@@ -1,13 +1,20 @@
 package model.entities;
 
 public class EscapeRoom {
-
+    private static EscapeRoom instance;
     private int idEscapeRoom;
     private String name;
 
-    public EscapeRoom(int idEscapeRoom, String name) {
+    private EscapeRoom(int idEscapeRoom, String name) {
         this.idEscapeRoom = idEscapeRoom;
         this.name = name;
+    }
+
+    public static EscapeRoom getInstance(){
+        if(instance == null){
+            instance = new EscapeRoom(1,"Adventures");
+        }
+        return instance;
     }
 
     public int getIdEscapeRoom() {

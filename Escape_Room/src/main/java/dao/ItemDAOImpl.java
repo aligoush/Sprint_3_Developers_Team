@@ -27,16 +27,18 @@ public class ItemDAOImpl implements ItemDAO {
     }*/
 
     @Override
-    public void add(Item item) {
-        addItem(item);
+    public void create(Item item) {
+        int idItem = createItem(item);
         if (item instanceof Clue) {
-            addClue((Clue) item);
+            createClue((Clue) item, idItem);
         } else if (item instanceof Decoration) {
-            addDecoration((Decoration) item);
+            createDecoration((Decoration) item, idItem);
         }
     }
 
-    public void addItem(Item item) {
+
+    public int createItem(Item item) {
+        int idItem = 0;
         String query = "INSERT INTO items (name_item, price, id_room, type) VALUES (?,?,?,?)";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
@@ -44,69 +46,55 @@ public class ItemDAOImpl implements ItemDAO {
             stmt.setString(1, item.getName());
             stmt.setDouble(2, item.getPrice());
             stmt.setInt(3, item.getIdRoom());
-            stmt.set(4, item.getType());
-            stmt.setInt(5, item.getId_escape_room());
+            stmt.setString(4, item.getType().name());
 
             stmt.executeUpdate();
+
             try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     int generatedId = generatedKeys.getInt(1);
-                    room.setId(generatedId);
-                    System.out.println("Room created with ID: " + generatedId);
+                    idItem = generatedId;
+                    item.setId(generatedId);
+                    System.out.println("Item created with ID: " + generatedId);
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Error inserting the room into DB. " + e.getMessage());
+            System.out.println("Error inserting the item into DB. " + e.getMessage());
         }
+        return idItem;
     }
 
-    public void addClue(Clue clue) {
-        String query = "INSERT INTO clues (, theme, difficulty, base_price, id_escape_room) VALUES (?,?,?,?,?)";
+    public void createClue(Clue clue, int idItem) {
+        String query = "INSERT INTO clues (id_item, thematic, details) VALUES (?,?,?)";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
-            stmt.setString(1, room.getName());
-            stmt.setString(2, room.getThematic());
-            stmt.setInt(3, room.getDifficulty());
-            stmt.setDouble(4, room.getBase_price());
-            stmt.setInt(5, room.getId_escape_room());
+            stmt.setInt(1, idItem);
+            stmt.setString(2, clue.getThematic().name());
+            stmt.setString(2, clue.getDetails());
 
             stmt.executeUpdate();
-            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    int generatedId = generatedKeys.getInt(1);
-                    room.setId(generatedId);
-                    System.out.println("Room created with ID: " + generatedId);
-                }
-            }
+
         } catch (SQLException e) {
-            System.out.println("Error inserting the room into DB. " + e.getMessage());
+            System.out.println("Error inserting the clue into DB. " + e.getMessage());
         }
     }
 
-    public void addDecoration(Decoration deco) {
-        String query = "INSERT INTO clues (, theme, difficulty, base_price, id_escape_room) VALUES (?,?,?,?,?)";
+    public void createDecoration(Decoration deco, int idItem) {
+        String query = "INSERT INTO decorations (id_item, material_type) VALUES (?,?)";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
-            stmt.setString(1, room.getName());
-            stmt.setString(2, room.getThematic());
-            stmt.setInt(3, room.getDifficulty());
-            stmt.setDouble(4, room.getBase_price());
-            stmt.setInt(5, room.getId_escape_room());
+            stmt.setInt(1, idItem);
+            stmt.setString(2, deco.getMaterial().name());
 
             stmt.executeUpdate();
-            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    int generatedId = generatedKeys.getInt(1);
-                    room.setId(generatedId);
-                    System.out.println("Room created with ID: " + generatedId);
-                }
-            }
+
         } catch (SQLException e) {
-            System.out.println("Error inserting the room into DB. " + e.getMessage());
+            System.out.println("Error inserting the decoration into DB. " + e.getMessage());
         }
     }
+
 
 
     @Override

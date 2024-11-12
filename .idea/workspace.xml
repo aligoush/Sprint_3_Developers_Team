@@ -4,22 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f8dabf6-ab7e-47a8-8d20-95467e955dfd" name="Changes" comment="update DB">
-      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/EscapeRoomDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/EscapeRoomDAOImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/RoomDAOTest.java" afterDir="false" />
+    <list default="true" id="0f8dabf6-ab7e-47a8-8d20-95467e955dfd" name="Changes" comment="update DB, RoomDAO,RoomDAOImpl">
+      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/controllers/EscapeRoomController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/EscapeRoomManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/ItemManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/PlayerManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/RoomManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/DBConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/MySQLConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/ItemDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/ItemDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/ItemDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/ItemDAOImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/RoomDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/RoomDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/RoomDAOImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/RoomDAOImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Certificate.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Certificate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Clue.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Clue.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Decoration.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Decoration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/EscapeRoom.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/EscapeRoom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Ticket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/view/EscapeRoomMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/view/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/utils/InputUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/utils/InputUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/view/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Escape_Room/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/target/classes/Main.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,12 +40,25 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2oi9LJZDJB5cJrVvCP9jgKJGkU0" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
+    "Application.Main.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "dev",
-    "last_opened_file_path": "C:/Users/alien/Desktop/DEV/IT_ACADEMY_JAVA/Sprint_3_Developers_Team - copia"
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/alien/Desktop/DEV/IT_ACADEMY_JAVA/Sprint_3_Developers_Team - copia",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.31724137"
   }
 }]]></component>
   <component name="RunManager">
@@ -59,7 +75,40 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0f8dabf6-ab7e-47a8-8d20-95467e955dfd" name="Changes" comment="update DB" />
+      <created>1731341473297</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731341473297</updated>
+    </task>
+    <task id="LOCAL-00001" summary="update Room, RoomDAO and Implementations, connections to MySQL DB">
+      <option name="closed" value="true" />
+      <created>1731341655937</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731341655937</updated>
+    </task>
+    <task id="LOCAL-00002" summary="update DB">
+      <option name="closed" value="true" />
+      <created>1731343468694</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731343468694</updated>
+    </task>
+    <task id="LOCAL-00003" summary="update DB, RoomDAO,RoomDAOImpl">
+      <option name="closed" value="true" />
+      <created>1731406548147</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731406548147</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -78,11 +127,22 @@
         </entry>
       </map>
     </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update DB table items, ++ type atrib" />
+    <MESSAGE value="update Room, RoomDAO and Implementations, connections to MySQL DB" />
     <MESSAGE value="update DB" />
-    <option name="LAST_COMMIT_MESSAGE" value="update DB" />
+    <MESSAGE value="update DB, RoomDAO,RoomDAOImpl" />
+    <option name="LAST_COMMIT_MESSAGE" value="update DB, RoomDAO,RoomDAOImpl" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -91,10 +151,12 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/Escape_Room/src/main/java/management/ItemManager.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
-      <default-breakpoints>
-        <breakpoint enabled="true" type="java-exception" />
-      </default-breakpoints>
     </breakpoint-manager>
   </component>
 </project>

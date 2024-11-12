@@ -1,26 +1,58 @@
 package view;
 
+import controllers.EscapeRoomController;
+
 import java.util.Scanner;
 
 public class Menu {
 
-    public void startMenu() {
-
+    public static void startMenu() throws Exception {
+        final EscapeRoomController controller = new EscapeRoomController();
         boolean exit = false;
 
         do {
             switch (menu()) {
                 case 1:
-                    createRoom();
+                    controller.createRoom();
                     break;
                 case 2:
-                    method2();
+                    controller.createClue();
                     break;
                 case 3:
                     method3();
                     break;
+                case 4:
+                    controller.createDecoration();
+                    break;
+                case 5:
+                    method3();
+                    break;
+                case 6:
+                    method3();
+                    break;
+                case 7:
+                    method3();
+                    break;
+                case 8:
+                    method3();
+                    break;
+                case 9:
+                    method3();
+                    break;
+                case 10:
+                    method3();
+                    break;
+                case 11:
+                    method3();
+                    break;
+                case 12:
+                    method3();
+                    break;
+                case 13:
+                    method3();
+                    break;
                 case 0:
-                    System.out.println("Gracias por usar la app");
+                    System.out.println("Finishing the program...");
                     exit = true;
                     break;
             }
@@ -31,20 +63,27 @@ public class Menu {
         Scanner entrada = new Scanner(System.in);
         byte option;
         final byte MINIMO = 0;
-        final byte MAXIMO = 3;
+        final byte MAXIMO = 13;
 
         do {
-            System.out.println("\nMENú PRINCIPAL");
+            System.out.println("\nMenu:");
             System.out.println("1. Create room");
             System.out.println("2. Create clue"); // do you want to add clue to the room?
             System.out.println("3. Add clue to the room");
-            System.out.println("4. Crear decoración, Y ¿quiere añadir la decoración a la sala?");
-            System.out.println("5. Añadir decoración a la sala");
-            System.out.println("6. Mostrar inventario ");
-            System.out.println("7. ");
+            System.out.println("4. Create decoration?");
+            System.out.println("5. Add decoration to the room");
+            System.out.println("6. Create player");
+            System.out.println("7. Add player to the room");
+            System.out.println("8. Show inventory");
+            System.out.println("9. Remove room or items");
+            System.out.println("10. Generate ticket");
+            System.out.println("11. Calculate total value of tickets");
+            System.out.println("12. Notify subscribed members");
+            System.out.println("13. Generate certificates of player");
+
             option = entrada.nextByte();
             if (option < MINIMO || option > MAXIMO) {
-                System.out.println("Escoja una opción válida");
+                System.out.println("Choose valid option");
             }
         } while (option < MINIMO || option > MAXIMO);
         return option;
