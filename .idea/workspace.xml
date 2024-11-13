@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f8dabf6-ab7e-47a8-8d20-95467e955dfd" name="Changes" comment="add ItemManager, update ItemDao">
+    <list default="true" id="08254954-1aa7-4e2d-9b7e-c2b21045ac07" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/TicketDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/TicketDAOImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/TicketManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BD/DB_escape_v4.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/BD/DB_escape_v4.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BD/DB_escape_v4.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/BD/DB_escape_v4.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BD/DB_escape_v4.sql" beforeDir="false" afterPath="$PROJECT_DIR$/BD/DB_escape_v4.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/management/ItemManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/ItemManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/controllers/EscapeRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/controllers/EscapeRoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/management/RoomManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/management/RoomManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/model/entities/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/view/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/view/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,134 +27,80 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;paumaneja&quot;
+  }
 }</component>
-  <component name="ProjectId" id="2oi9LJZDJB5cJrVvCP9jgKJGkU0" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/aligoush/Sprint_3_Developers_Team&quot;,
+    &quot;accountId&quot;: &quot;ee55d317-4e66-4e8e-a228-aaee87408101&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2oQiNIYmQXi7jR0YABLWCzs8RtG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.Main.executor": "Run",
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Main.executor": "Debug",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "dev",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/alien/Desktop/DEV/IT_ACADEMY_JAVA/Sprint_3_Developers_Team - copia",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.31724137"
+    "last_opened_file_path": "C:/Users/anton/IdeaProjects/Sprint_3_Developers_Team/Escape_Room"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Escape_Room" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0f8dabf6-ab7e-47a8-8d20-95467e955dfd" name="Changes" comment="update DB" />
-      <created>1731341473297</created>
+      <changelist id="08254954-1aa7-4e2d-9b7e-c2b21045ac07" name="Changes" comment="" />
+      <created>1730808158263</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1731341473297</updated>
+      <updated>1730808158263</updated>
     </task>
-    <task id="LOCAL-00001" summary="update Room, RoomDAO and Implementations, connections to MySQL DB">
-      <option name="closed" value="true" />
-      <created>1731341655937</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1731341655937</updated>
-    </task>
-    <task id="LOCAL-00002" summary="update DB">
-      <option name="closed" value="true" />
-      <created>1731343468694</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1731343468694</updated>
-    </task>
-    <task id="LOCAL-00003" summary="update DB, RoomDAO,RoomDAOImpl">
-      <option name="closed" value="true" />
-      <created>1731406548147</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1731406548147</updated>
-    </task>
-    <task id="LOCAL-00004" summary="add ItemManager, update ItemDao">
-      <option name="closed" value="true" />
-      <created>1731446643294</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1731446643295</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="dev" />
-                </option>
-              </RecentGroup>
-            </list>
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="update DB table items, ++ type atrib" />
-    <MESSAGE value="update Room, RoomDAO and Implementations, connections to MySQL DB" />
-    <MESSAGE value="update DB" />
-    <MESSAGE value="update DB, RoomDAO,RoomDAOImpl" />
-    <MESSAGE value="add ItemManager, update ItemDao" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ItemManager, update ItemDao" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.NullPointerException" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/Escape_Room/src/main/java/management/ItemManager.java</url>
-          <line>28</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

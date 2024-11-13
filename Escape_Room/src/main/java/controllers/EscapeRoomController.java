@@ -4,6 +4,7 @@ import dao.EscapeRoomDAOImpl;
 import management.ItemManager;
 import management.PlayerManager;
 import management.RoomManager;
+import management.TicketManager;
 import model.entities.EscapeRoom;
 
 public class EscapeRoomController {
@@ -13,6 +14,7 @@ public class EscapeRoomController {
     private EscapeRoomDAOImpl erdao;
     private ItemManager itemManager;
     private PlayerManager playerManager;
+    private TicketManager ticketManager;
 
     public EscapeRoomController(){
         this.escapeRoom = EscapeRoom.getInstance();
@@ -20,6 +22,7 @@ public class EscapeRoomController {
         this.erdao = new EscapeRoomDAOImpl();
         this.itemManager = ItemManager.getInstance(this.roomManager);
         this.playerManager = PlayerManager.getInstance();
+        this.ticketManager= TicketManager.getInstance();
     }
 
     public void createRoom() throws Exception {
@@ -54,5 +57,13 @@ public class EscapeRoomController {
     public void createPlayer(){
         erdao.add(this.escapeRoom);
         playerManager.createPlayer();
+    }
+
+    public void createTicket() {
+        ticketManager.createTicket();
+    }
+
+    public double getTotalTicketsPrice() {
+        return ticketManager.getTotalTicketsPrice();
     }
 }

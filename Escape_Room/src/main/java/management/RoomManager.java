@@ -29,25 +29,6 @@ public class RoomManager {
         int difficulty = InputUtils.readInt("Difficulty: ");
         int id = 1;
         Thematic thematic = InputUtils.readEnum("Choose thematic: ", Thematic.class);
- /*       System.out.println("Thematic: \n  "
-        + "1. Halloween"
-                + "\n2. Science Fiction"
-                + "\n3. Christmas"
-                + "\n4. Jurassic Park");
-        int thematicNumber = InputUtils.readInt("Select the value: \n");
-        if(thematicNumber < 1 || thematicNumber > 4){
-            throw new Exception("Choose valid number");
-        }
-        switch (thematicNumber){
-            case 1: thematic = Thematic.HALLOWEEN;
-            break;
-            case 2: thematic = Thematic.SCIENCE_FICTION;
-            break;
-            case 3: thematic = Thematic.CHRISTMAS;
-            break;
-            case 4: thematic = Thematic.JURASSIC_PARK;
-        }
-*/
         double price = InputUtils.readDouble("Price of the room: ");
         Room newRoom = new Room(id,name,thematic, difficulty, price, escapeRoom.getIdEscapeRoom());
         roomDao.createRoom(newRoom);
