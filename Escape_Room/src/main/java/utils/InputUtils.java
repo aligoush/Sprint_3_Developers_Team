@@ -1,9 +1,8 @@
 package utils;
 
-import enums.Thematic;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class InputUtils {
 
@@ -88,7 +87,7 @@ public class InputUtils {
         return data;
     }
 
-    public static <E extends Enum<E>> E readEnum(String message, Class<E> enumType){
+    public static <E extends Enum<E>> E readEnum(String message, Class<E> enumType) {
         E[] enumValues = enumType.getEnumConstants();
         E selectedValue = null;
         boolean dataOk = false;
@@ -96,13 +95,13 @@ public class InputUtils {
             try {
                 System.out.println(message);
                 for (int i = 0; i < enumValues.length; i++) {
-                    System.out.println(i + 1 + "."  + enumValues[i]);
+                    System.out.println(i + 1 + "." + enumValues[i]);
                 }
                 System.out.println("Choose an option (1-" + enumValues.length + "):");
                 int ordinal = input.nextInt();
 
-                if(ordinal > 0 && ordinal <= enumValues.length){
-                    selectedValue = enumValues[ordinal-1];
+                if (ordinal > 0 && ordinal <= enumValues.length) {
+                    selectedValue = enumValues[ordinal - 1];
                     dataOk = true;
                 } else {
                     System.out.println("Invalid option, choose an option between (1 and " + enumValues.length + "):");
@@ -115,5 +114,22 @@ public class InputUtils {
             }
         }
         return selectedValue;
+    }
+
+    public static String readEmail(String message) {
+        String email = "";
+        String regex = "^(?=.{1,45}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+        boolean dataOk = false;
+
+        while (!dataOk) {
+            System.out.println(message);
+            email = input.nextLine();
+            if (!Pattern.compile(regex).matcher(email).matches()) {
+                System.out.println("The email format is invalid, try again.");
+            } else {
+                dataOk = true;
+            }
+        }
+        return email;
     }
 }

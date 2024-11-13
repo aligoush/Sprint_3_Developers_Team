@@ -4,47 +4,58 @@ public class Player {
 
     private int idPlayer;
     private String name;
-    private String subscription;
-    private String achievements;
+    private boolean subscription;
+    private String email;
 
-    public int getIdPlayer() {
-        return idPlayer;
+    public Player(String name, boolean subscription, String email) {
+        this.name = name;
+        this.subscription = subscription;
+        this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getSubscription() {
+    public boolean isSubscription() {
         return subscription;
     }
 
-    public String getAchievements() {
-        return achievements;
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getIdPlayer() {
+        return idPlayer;
     }
 
     public void setIdPlayer(int idPlayer) {
         this.idPlayer = idPlayer;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setSubscription(String subscription) {
+    public boolean getSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(boolean subscription) {
         this.subscription = subscription;
     }
 
-    public void setAchievements(String achievements) {
-        this.achievements = achievements;
-    }
-
+    @Override
     public String toString() {
         return "Player{" +
                 "idPlayer=" + idPlayer +
                 ", name='" + name + '\'' +
-                ", subscription='" + subscription + '\'' +
-                ", achievements='" + achievements + '\'' +
+                ", subscription=" + subscription +
+                ", email='" + email + '\'' +
                 '}';
     }
 }

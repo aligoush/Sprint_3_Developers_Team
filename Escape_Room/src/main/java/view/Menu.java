@@ -28,7 +28,7 @@ public class Menu {
                     method3();
                     break;
                 case 6:
-                    method3();
+                    controller.createPlayer();
                     break;
                 case 7:
                     method3();

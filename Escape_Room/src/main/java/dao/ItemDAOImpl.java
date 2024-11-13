@@ -5,6 +5,8 @@ import model.entities.Decoration;
 import model.entities.Item;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemDAOImpl implements ItemDAO {
 
@@ -94,7 +96,6 @@ public class ItemDAOImpl implements ItemDAO {
             System.out.println("Error inserting the decoration into DB. " + e.getMessage());
         }
     }
-
 
 
     @Override
