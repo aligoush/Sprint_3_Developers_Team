@@ -45,7 +45,7 @@ public class ItemDAOImpl implements ItemDAO {
 
             stmt.setString(1, item.getName());
             stmt.setDouble(2, item.getPrice());
-            stmt.setInt(3, item.getIdRoom());
+            stmt.setNull(3, Types.INTEGER);
             stmt.setString(4, item.getType().name());
 
             stmt.executeUpdate();
@@ -71,7 +71,7 @@ public class ItemDAOImpl implements ItemDAO {
 
             stmt.setInt(1, idItem);
             stmt.setString(2, clue.getThematic().name());
-            stmt.setString(2, clue.getDetails());
+            stmt.setString(3, clue.getDetails());
 
             stmt.executeUpdate();
 

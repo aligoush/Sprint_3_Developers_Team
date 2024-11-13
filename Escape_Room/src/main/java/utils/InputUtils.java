@@ -44,6 +44,8 @@ public class InputUtils {
             } catch (InputMismatchException e) {
                 System.err.println("Format error. Please, try again.");
                 input.nextLine();
+            } finally {
+                input.nextLine();
             }
         }
         return data;
@@ -56,7 +58,6 @@ public class InputUtils {
 
         while (!dataOk) {
             try {
-
                 System.out.println(message);
                 data = input.nextLine();
                 dataOk = true;
@@ -66,7 +67,6 @@ public class InputUtils {
             }
         }
         return data;
-
     }
 
     public static double readDouble(String message) {
@@ -80,6 +80,8 @@ public class InputUtils {
                 dataOk = true;
             } catch (InputMismatchException e) {
                 System.err.println("Format error. Please, try again.");
+                input.nextLine();
+            } finally {
                 input.nextLine();
             }
         }
@@ -108,10 +110,10 @@ public class InputUtils {
             } catch (InputMismatchException e) {
                 System.err.println("Format error. Please, try again.");
                 input.nextLine();
+            } finally {
+                input.nextLine();
             }
         }
         return selectedValue;
     }
-
-
 }

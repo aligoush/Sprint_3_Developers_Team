@@ -19,7 +19,7 @@ public class EscapeRoomController {
     }
 
     public void createRoom() throws Exception {
-
+        erdao.add(this.escapeRoom);
         roomManager.createRoom();
     }
 

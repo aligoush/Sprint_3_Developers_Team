@@ -26,7 +26,6 @@ public class ItemManager {
         String name = InputUtils.readString("Name of the clue: ");
         double price = InputUtils.readDouble("Price of the clue: ");
         Type type = Type.CLUE;
-        int idRoom = 0;
         int id = 1;
         Thematic thematic = InputUtils.readEnum("Choose thematic: ", Thematic.class);
         String details = InputUtils.readString("Define details of the clue: ");
@@ -38,7 +37,6 @@ public class ItemManager {
         String name = InputUtils.readString("Name of the decoration: ");
         double price = InputUtils.readDouble("Price of the decoration: ");
         Type type = Type.DECORATION;
-        int idRoom = 0;
         int id = 1;
         MaterialType material = InputUtils.readEnum("Choose material: ", MaterialType.class);
         Decoration decoration = new Decoration(id, name, price, type,  material);
