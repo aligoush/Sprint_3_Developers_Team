@@ -19,13 +19,13 @@ public class Menu {
                     controller.createClue();
                     break;
                 case 3:
-                    method3();
+                    controller.addClueToRoom();
                     break;
                 case 4:
                     controller.createDecoration();
                     break;
                 case 5:
-                    method3();
+                    controller.addDecoToRoom();
                     break;
                 case 6:
                     controller.createPlayer();
@@ -34,7 +34,7 @@ public class Menu {
                     method3();
                     break;
                 case 8:
-                    method3();
+                    controller.showInventory();
                     break;
                 case 9:
                     method3();

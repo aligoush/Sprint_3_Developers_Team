@@ -6,11 +6,14 @@ import model.entities.EscapeRoom;
 import model.entities.Room;
 import utils.InputUtils;
 
+import java.util.List;
+
 public class RoomManager {
 
     private static RoomManager instance;
     private RoomDAOImpl roomDao;
     private EscapeRoom escapeRoom;
+
     private RoomManager(EscapeRoom escapeRoom){
         this.escapeRoom = escapeRoom;
         this.roomDao = new RoomDAOImpl();
@@ -48,5 +51,18 @@ public class RoomManager {
         double price = InputUtils.readDouble("Price of the room: ");
         Room newRoom = new Room(id,name,thematic, difficulty, price, escapeRoom.getIdEscapeRoom());
         roomDao.createRoom(newRoom);
+    }
+
+    public List<Room> showRooms(){
+        System.out.println("List of rooms in the DB:");
+        List<Room> roomList = roomDao.showAll();
+        System.out.println(roomList);
+        return roomList;
+    }
+
+    public void showInventoryRooms(){
+        System.out.println("List of rooms in the DB:");
+        List<Room> roomList = roomDao.showAll();
+        System.out.println(roomList);
     }
 }

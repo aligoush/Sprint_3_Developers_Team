@@ -1,5 +1,8 @@
 package dao;
 
+import enums.MaterialType;
+import enums.Thematic;
+import enums.Type;
 import model.entities.Clue;
 import model.entities.Decoration;
 import model.entities.Item;
@@ -10,23 +13,115 @@ import java.util.List;
 
 public class ItemDAOImpl implements ItemDAO {
 
-    //@Override
-    /*public List<Clue> showAll() {
-        List<Room> clues = new ArrayList<>();
-        String query = "SELECT * FROM clues";
-        try (Connection connection = MySQLConnection.getInstance().getConnection();
-             Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery(query)) {
+    @Override
+    public List<Item> showAvailableClues() {
+        List<Item> clues = new ArrayList<>();
+        String query = "SELECT items.*, clues.thematic, clues.details FROM items INNER JOIN clues ON clues.id_item = items.id_item WHERE items.type = 'CLUE' AND items.id_room IS NULL";
+        try (Connection conn = MySQLConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()){
-                clues.add(new Clue(rs.getInt("id_room"), rs.getString("name"),
-                        rs.getString("theme"), rs.getInt("difficulty"), rs.getDouble("base_price"), rs.getInt("id_escape_room")));
+                Type type = Type.valueOf(rs.getString("type"));
+                Thematic thematic = Thematic.valueOf(rs.getString("thematic"));
+                    clues.add(new Clue(rs.getInt("id_item"),
+                            rs.getString("name_item"),
+                            rs.getDouble("price"),
+                            rs.getInt("id_room"),
+                            type,
+                            thematic,
+                            rs.getString("details")));
+
             }
         } catch (SQLException e){
             System.out.println("Error extracting data: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error converting data to enum: " + e.getMessage());
         }
         return clues;
-    }*/
+    }
+
+    @Override
+    public List<Item> showAllClues() {
+        List<Item> clues = new ArrayList<>();
+        String query = "SELECT items.*, clues.thematic, clues.details FROM items INNER JOIN clues ON clues.id_item = items.id_item WHERE items.type = 'CLUE'";
+        try (Connection conn = MySQLConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()){
+                Type type = Type.valueOf(rs.getString("type"));
+                Thematic thematic = Thematic.valueOf(rs.getString("thematic"));
+                clues.add(new Clue(rs.getInt("id_item"),
+                        rs.getString("name_item"),
+                        rs.getDouble("price"),
+                        rs.getInt("id_room"),
+                        type,
+                        thematic,
+                        rs.getString("details")));
+
+            }
+        } catch (SQLException e){
+            System.out.println("Error extracting data: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error converting data to enum: " + e.getMessage());
+        }
+        return clues;
+    }
+
+    @Override
+    public List<Item> showAvailableDecos() {
+        List<Item> decos = new ArrayList<>();
+        String query = "SELECT items.*, decorations.material_type FROM items INNER JOIN decorations ON decorations.id_item = items.id_item WHERE items.type = 'DECORATION' AND items.id_room IS NULL";
+        try (Connection conn = MySQLConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()){
+                Type type = Type.valueOf(rs.getString("type"));
+                MaterialType materialType = MaterialType.valueOf(rs.getString("material_type"));
+                decos.add(new Decoration(rs.getInt("id_item"),
+                        rs.getString("name_item"),
+                        rs.getDouble("price"),
+                        rs.getInt("id_room"),
+                        type,
+                        materialType));
+
+            }
+        } catch (SQLException e){
+            System.out.println("Error extracting data: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error converting data to enum: " + e.getMessage());
+        }
+        return decos;
+    }
+
+    @Override
+    public List<Item> showAllDecos() {
+        List<Item> decos = new ArrayList<>();
+        String query = "SELECT items.*, decorations.material_type FROM items INNER JOIN decorations ON decorations.id_item = items.id_item WHERE items.type = 'DECORATION'";
+        try (Connection conn = MySQLConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()){
+                Type type = Type.valueOf(rs.getString("type"));
+                MaterialType materialType = MaterialType.valueOf(rs.getString("material_type"));
+                decos.add(new Decoration(rs.getInt("id_item"),
+                        rs.getString("name_item"),
+                        rs.getDouble("price"),
+                        rs.getInt("id_room"),
+                        type,
+                        materialType));
+
+            }
+        } catch (SQLException e){
+            System.out.println("Error extracting data: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error converting data to enum: " + e.getMessage());
+        }
+        return decos;
+    }
 
     @Override
     public void create(Item item) {
@@ -98,9 +193,32 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
 
-    @Override
-    public void update(Item clue) {
+    public void updateClueRoom(int idClue, int idRoom) {
+        String query = "UPDATE items SET id_room = ? WHERE id_item = ?";
+        try (Connection conn = MySQLConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, idRoom);
+            stmt.setInt(2, idClue);
 
+            int rowsAffected = stmt.executeUpdate();
+            System.out.println(rowsAffected);
+        } catch (SQLException e) {
+            System.out.println("Error updating data: " + e.getMessage());
+        }
+    }
+
+    public void updateDecoRoom(int idDeco, int idRoom) {
+        String query = "UPDATE items SET id_room = ? WHERE id_item = ?";
+        try (Connection conn = MySQLConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, idRoom);
+            stmt.setInt(2, idDeco);
+
+            int rowsAffected = stmt.executeUpdate();
+            System.out.println("Registros afectados: " + rowsAffected);
+        } catch (SQLException e) {
+            System.out.println("Error updating data: " + e.getMessage());
+        }
     }
 
     @Override

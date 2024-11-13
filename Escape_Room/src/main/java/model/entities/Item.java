@@ -17,6 +17,14 @@ public abstract class Item {
         this.type = type;
     }
 
+    public Item(int id, String name, double price,int idRoom, Type type) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.idRoom = idRoom;
+        this.type = type;
+    }
+
     public int getId() {
         return id;
     }
@@ -55,5 +63,15 @@ public abstract class Item {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", idRoom=" + idRoom +
+                ", type=" + type;
     }
 }

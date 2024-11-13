@@ -39,8 +39,8 @@ public class Clue extends Item {
 
     @Override
     public String toString() {
-        return "\nClue: " + super.toString() + ", Clue{" +
-                "thematic=" + thematic +
+        return "\nClue: " + super.toString() +
+                ", thematic=" + thematic +
                 ", details='" + details + '\'' +
                 '}' + "\n";
     }
