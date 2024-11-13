@@ -39,7 +39,7 @@ public class ItemManager {
         Type type = Type.DECORATION;
         int id = 1;
         MaterialType material = InputUtils.readEnum("Choose material: ", MaterialType.class);
-        Decoration decoration = new Decoration(id, name, price, type,  material);
+        Decoration decoration = new Decoration(id, name, price, type, material);
         itemDao.create(decoration);
     }
 

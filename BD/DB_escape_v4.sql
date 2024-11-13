@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2024-11-12 23:02
+-- Generated: 2024-11-13 13:21
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -51,7 +51,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE IF NOT EXISTS `EscapeRoom`.`decorations` (
   `id_item` INT(11) NOT NULL,
-  `material_type` ENUM("WOOD", " PLASTIC", "METALLIC", "CRYSTAL") NOT NULL,
+  `material_type` ENUM("WOOD", "PLASTIC", "METALLIC", "CRYSTAL") NOT NULL,
   PRIMARY KEY (`id_item`),
   INDEX `fk_decorations_items1_idx` (`id_item` ASC) VISIBLE,
   CONSTRAINT `fk_decorations_items1`
