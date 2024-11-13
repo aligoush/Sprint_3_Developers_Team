@@ -1,5 +1,5 @@
 -- MySQL Workbench Synchronization
--- Generated: 2024-11-13 13:21
+-- Generated: 2024-11-13 20:05
 -- Model: New Model
 -- Version: 1.0
 -- Project: Name of the project
@@ -65,9 +65,10 @@ DEFAULT CHARACTER SET = utf8mb4;
 CREATE TABLE IF NOT EXISTS `EscapeRoom`.`players` (
   `id_player` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
-  `achievements` VARCHAR(45) NOT NULL,
   `subscription` TINYINT(4) NOT NULL,
-  PRIMARY KEY (`id_player`))
+  `email` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_player`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
@@ -121,6 +122,7 @@ CREATE TABLE IF NOT EXISTS `EscapeRoom`.`player_is_playing` (
   `id_player` INT(11) NOT NULL,
   `id_room` INT(11) NOT NULL,
   `play_date` DATETIME NULL DEFAULT NULL,
+  `achievements` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_player`, `id_room`),
   INDEX `fk_player_has_room_room1_idx` (`id_room` ASC) VISIBLE,
   INDEX `fk_player_has_room_player1_idx` (`id_player` ASC) VISIBLE,
