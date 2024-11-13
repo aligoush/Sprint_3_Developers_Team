@@ -26,11 +26,11 @@ public class ItemManager {
         String name = InputUtils.readString("Name of the clue: ");
         double price = InputUtils.readDouble("Price of the clue: ");
         Type type = Type.CLUE;
-        int idRoom = 1;
+        int idRoom = 0;
         int id = 1;
         Thematic thematic = InputUtils.readEnum("Choose thematic: ", Thematic.class);
         String details = InputUtils.readString("Define details of the clue: ");
-        Clue clue = new Clue(id, name, price, idRoom, type,  thematic, details);
+        Clue clue = new Clue(id, name, price,  type,  thematic, details);
         itemDao.create(clue);
     }
 
@@ -38,10 +38,10 @@ public class ItemManager {
         String name = InputUtils.readString("Name of the decoration: ");
         double price = InputUtils.readDouble("Price of the decoration: ");
         Type type = Type.DECORATION;
-       // int idRoom = Integer.parseInt(null);
+        int idRoom = 0;
         int id = 1;
         MaterialType material = InputUtils.readEnum("Choose material: ", MaterialType.class);
-        Decoration decoration = new Decoration(id, name, price, idRoom, type,  material);
+        Decoration decoration = new Decoration(id, name, price, type,  material);
         itemDao.create(decoration);
     }
 

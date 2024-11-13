@@ -10,11 +10,10 @@ public abstract class Item {
     private int idRoom;
     private Type type;
 
-    public Item(int id, String name, double price, int idRoom, Type type) {
+    public Item(int id, String name, double price, Type type) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.idRoom = idRoom;
         this.type = type;
     }
 

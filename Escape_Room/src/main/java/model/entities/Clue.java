@@ -9,8 +9,8 @@ public class Clue extends Item {
     private Thematic thematic;
     private String details;
 
-    public Clue(int id, String name, double price, int idRoom, Type type, Thematic thematic, String details) {
-        super(id, name, price, idRoom, type);
+    public Clue(int id, String name, double price, Type type, Thematic thematic, String details) {
+        super(id, name, price, type);
         this.thematic = thematic;
         this.details = details;
     }

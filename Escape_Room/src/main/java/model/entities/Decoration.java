@@ -8,8 +8,8 @@ public class Decoration extends Item {
 
     private MaterialType material;
 
-    public Decoration(int id, String name, double price, int idRoom, Type type, MaterialType material) {
-        super(id, name, price, idRoom, type);
+    public Decoration(int id, String name, double price, Type type, MaterialType material) {
+        super(id, name, price, type);
         this.material = material;
     }
 
