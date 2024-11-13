@@ -13,6 +13,11 @@ public class Decoration extends Item {
         this.material = material;
     }
 
+    public Decoration(int id, String name, double price, int idRoom, Type type, MaterialType material) {
+        super(id, name, price, idRoom, type);
+        this.material = material;
+    }
+
     public MaterialType getMaterial() {
         return material;
     }
@@ -23,9 +28,9 @@ public class Decoration extends Item {
 
     @Override
     public String toString() {
-        return "Decoration{" +
+        return "\nItem: " + super.toString() + ", Decoration{" +
                 "material=" + material +
-                '}';
+                '}' + "\n";
     }
 }
 
