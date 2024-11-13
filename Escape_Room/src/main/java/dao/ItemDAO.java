@@ -5,10 +5,12 @@ import model.entities.Item;
 import java.util.List;
 
 public interface ItemDAO {
-    //Room findById(int id);
-    //List<Item> showAll();
+    List<Item> showAvailableClues();
+    List<Item> showAvailableDecos();
+    List<Item> showAllClues();
+    List<Item> showAllDecos();
     void create(Item item);
-    void update(Item item);
-
+    void updateClueRoom(int idClue, int idRoom);
+    void updateDecoRoom(int idDeco, int idRoom);
     void delete(int id);
 }
