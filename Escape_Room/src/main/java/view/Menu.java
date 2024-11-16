@@ -43,10 +43,10 @@ public class Menu {
                         controller.delete();
                         break;
                     case 10:
-                        method3();
+                        controller.createTicket();
                         break;
                     case 11:
-                        method3();
+                        controller.getTotalTicketsPrice();
                         break;
                     case 12:
                         method3();
