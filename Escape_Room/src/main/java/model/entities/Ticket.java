@@ -1,35 +1,34 @@
 package model.entities;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Ticket {
 
     private int idTicket;
-    private Date saleDate;
-    private float totalPrice;
+    private LocalDateTime saleDate;
+    private double totalPrice;
+    private int idPlayer;
+
+    public Ticket(double totalPrice, int idPlayer) {
+        this.totalPrice = totalPrice;
+        this.saleDate = LocalDateTime.now();
+        this.idPlayer=idPlayer;
+    }
 
     public int getIdTicket() {
         return idTicket;
     }
 
-    public void setIdTicket(int idTicket) {
-        this.idTicket = idTicket;
+    public int getIdPlayer() {
+        return idPlayer;
     }
 
-    public Date getSaleDate() {
+    public LocalDateTime getSaleDate() {
         return saleDate;
     }
 
-    public void setSaleDate(Date saleDate) {
-        this.saleDate = saleDate;
-    }
-
-    public float getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
-    }
-
-    public void setTotalPrice(float totalPrice) {
-        this.totalPrice = totalPrice;
     }
 
     @Override

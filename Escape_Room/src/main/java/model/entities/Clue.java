@@ -21,6 +21,7 @@ public class Clue extends Item {
         this.details = details;
     }
 
+
     public Thematic getThematic() {
         return thematic;
     }

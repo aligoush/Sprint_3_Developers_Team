@@ -55,4 +55,40 @@ public class RoomManager {
         List<Room> roomList = roomDao.getAllRooms();
         System.out.println(roomList);
     }
+
+    public List<Room> showRoomsByTheme(Thematic thematic){
+        System.out.println("List of rooms in the DB with thematic: " + thematic);
+        List<Room> roomList = roomDao.showRoomsByThematic(Thematic.valueOf(thematic.name()));
+        if (roomList.isEmpty()) {
+            System.out.println("No rooms found with matching thematic.");
+        }
+        System.out.println(roomList);
+        return roomList;
+    }
+
+    public void deleteRoom(){
+        System.out.println("List of rooms in the DB:");
+        List<Room> roomList = roomDao.showAll();
+        if (roomList.isEmpty()) {
+            System.out.println("No rooms found in the DB.");
+        }
+
+        System.out.println(roomList);
+
+        Room selectedRoom = null;
+        int idRoom = 0;
+        while (selectedRoom == null){
+            idRoom = InputUtils.readInt("Choose the Room ID you want to delete: ");
+            int finalIdRoom = idRoom;
+            selectedRoom = roomList.stream()
+                    .filter(room -> room.getId() == finalIdRoom)
+                    .findFirst()
+                    .orElse(null);
+            if (selectedRoom == null){
+                System.out.println("Invalid ID Room. Try again.");
+            }
+        }
+
+        roomDao.delete(idRoom);
+    }
 }
