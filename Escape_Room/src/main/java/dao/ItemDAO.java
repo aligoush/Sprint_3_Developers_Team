@@ -1,16 +1,19 @@
 package dao;
 
+import model.entities.Clue;
+import model.entities.Decoration;
 import model.entities.Item;
 
 import java.util.List;
 
 public interface ItemDAO {
-    List<Item> showAvailableClues();
-    List<Item> showAvailableDecos();
-    List<Item> showAllClues();
-    List<Item> showAllDecos();
+    List<Clue> showAvailableClues();
+    List<Decoration> showAvailableDecos();
+    List<Clue> showAllClues();
+    List<Decoration> showAllDecos();
     void create(Item item);
-    void updateClueRoom(int idClue, int idRoom);
-    void updateDecoRoom(int idDeco, int idRoom);
-    void delete(int id);
+    //void updateClueRoom(int idClue, int idRoom);
+    //void updateDecoRoom(int idDeco, int idRoom);
+    void updateItemRoom(int id, int idRoom);
+    void deleteItem(int id);
 }

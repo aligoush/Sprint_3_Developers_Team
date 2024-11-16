@@ -1,6 +1,8 @@
 package view;
 
 import controllers.EscapeRoomController;
+import exceptions.NoAvailableCluesException;
+import exceptions.NoAvailableDecosException;
 
 import java.util.Scanner;
 
@@ -11,50 +13,55 @@ public class Menu {
         boolean exit = false;
 
         do {
-            switch (menu()) {
-                case 1:
-                    controller.createRoom();
-                    break;
-                case 2:
-                    controller.createClue();
-                    break;
-                case 3:
-                    controller.addClueToRoom();
-                    break;
-                case 4:
-                    controller.createDecoration();
-                    break;
-                case 5:
-                    controller.addDecoToRoom();
-                    break;
-                case 6:
-                    controller.createPlayer();
-                    break;
-                case 7:
-                    method3();
-                    break;
-                case 8:
-                    controller.showInventory();
-                    break;
-                case 9:
-                    method3();
-                    break;
-                case 10:
-                    method3();
-                    break;
-                case 11:
-                    method3();
-                    break;
-                case 12:
-                    method3();
-                    break;
-                case 13:
-                    method3();
-                    break;
-                case 0:
-                    System.out.println("Finishing the program...");
-                    exit = true;
-                    break;
+            try {
+                switch (menu()) {
+                    case 1:
+                        controller.createRoom();
+                        break;
+                    case 2:
+                        controller.createClue();
+                        break;
+                    case 3:
+                        controller.addClueToRoom();
+                        break;
+                    case 4:
+                        controller.createDecoration();
+                        break;
+                    case 5:
+                        controller.addDecoToRoom();
+                        break;
+                    case 6:
+                        controller.createPlayer();
+                        break;
+                    case 7:
+                        method3();
+                        break;
+                    case 8:
+                        controller.showInventory();
+                        break;
+                    case 9:
+                        controller.delete();
+                        break;
+                    case 10:
+                        method3();
+                        break;
+                    case 11:
+                        method3();
+                        break;
+                    case 12:
+                        method3();
+                        break;
+                    case 13:
+                        method3();
+                        break;
+                    case 0:
+                        System.out.println("Finishing the program...");
+                        exit = true;
+                        break;
+                }
+            } catch (NoAvailableCluesException | NoAvailableDecosException e){
+                System.out.println(e.getMessage());
+                System.out.println("Returning to the main menu...");
             }
         } while (!exit);
     }

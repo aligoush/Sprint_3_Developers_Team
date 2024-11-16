@@ -54,6 +54,24 @@ public class RoomDAOImpl implements RoomDAO {
     }
 
     @Override
+    public List<Room> showRoomsByThematic(Thematic thematic) {
+        List<Room> rooms = new ArrayList<>();
+        String query = "SELECT * FROM rooms WHERE thematic = ?";
+        try (Connection connection = MySQLConnection.getInstance().getConnection();
+             PreparedStatement stmt = connection.prepareStatement(query)){
+             stmt.setString(1, thematic.name());
+             ResultSet rs = stmt.executeQuery();
+                while (rs.next()) {
+                rooms.add(new Room(rs.getInt("id_room"), rs.getString("name"),
+                        Thematic.valueOf(rs.getString("thematic").toUpperCase()), rs.getInt("difficulty"), rs.getDouble("base_price"), rs.getInt("id_escape_room")));
+                }
+        } catch (SQLException e) {
+            System.out.println("Error extracting data: " + e.getMessage());
+        }
+        return rooms;
+    }
+
+    @Override
     public void createRoom(Room room) {
         String query = "INSERT INTO rooms (name, thematic, difficulty, base_price, id_escape_room) VALUES (?,?,?,?,?)";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
@@ -103,7 +121,7 @@ public class RoomDAOImpl implements RoomDAO {
             stmt.executeUpdate();
             System.out.println("Room removed.");
         } catch (SQLException e) {
-            System.out.println("Error removing romm from DB. " + e.getMessage());
+            System.out.println("Error removing room from DB. " + e.getMessage());
         }
     }
 }

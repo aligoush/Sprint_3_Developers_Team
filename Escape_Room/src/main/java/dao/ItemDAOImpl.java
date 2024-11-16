@@ -13,9 +13,11 @@ import java.util.List;
 
 public class ItemDAOImpl implements ItemDAO {
 
+
+
     @Override
-    public List<Item> showAvailableClues() {
-        List<Item> clues = new ArrayList<>();
+    public List<Clue> showAvailableClues() {
+        List<Clue> clues = new ArrayList<>();
         String query = "SELECT items.*, clues.thematic, clues.details FROM items INNER JOIN clues ON clues.id_item = items.id_item WHERE items.type = 'CLUE' AND items.id_room IS NULL";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -42,8 +44,8 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public List<Item> showAllClues() {
-        List<Item> clues = new ArrayList<>();
+    public List<Clue> showAllClues() {
+        List<Clue> clues = new ArrayList<>();
         String query = "SELECT items.*, clues.thematic, clues.details FROM items INNER JOIN clues ON clues.id_item = items.id_item WHERE items.type = 'CLUE'";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -70,9 +72,9 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public List<Item> showAvailableDecos() {
-        List<Item> decos = new ArrayList<>();
-        String query = "SELECT items.*, decorations.material_type FROM items INNER JOIN decorations ON decorations.id_item = items.id_item WHERE items.type = 'DECORATION' AND items.id_room IS NULL";
+    public List<Decoration> showAvailableDecos() {
+        List<Decoration> decos = new ArrayList<>();
+        String query = "SELECT items.*, decorations.material_type FROM items INNER JOIN decorations ON decorations.id_item = items.id_item AND items.id_room IS NULL";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
@@ -97,8 +99,8 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public List<Item> showAllDecos() {
-        List<Item> decos = new ArrayList<>();
+    public List<Decoration> showAllDecos() {
+        List<Decoration> decos = new ArrayList<>();
         String query = "SELECT items.*, decorations.material_type FROM items INNER JOIN decorations ON decorations.id_item = items.id_item WHERE items.type = 'DECORATION'";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(query);
@@ -193,7 +195,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
 
-    public void updateClueRoom(int idClue, int idRoom) {
+    /*public void updateClueRoom(int idClue, int idRoom) {
         String query = "UPDATE items SET id_room = ? WHERE id_item = ?";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -219,11 +221,34 @@ public class ItemDAOImpl implements ItemDAO {
         } catch (SQLException e) {
             System.out.println("Error updating data: " + e.getMessage());
         }
+    }*/
+
+    public void updateItemRoom(int id, int idRoom) {
+        String query = "UPDATE items SET id_room = ? WHERE id_item = ?";
+        try (Connection conn = MySQLConnection.getInstance().getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1, idRoom);
+            stmt.setInt(2, id);
+
+            int rowsAffected = stmt.executeUpdate();
+            System.out.println("Registros afectados: " + rowsAffected);
+        } catch (SQLException e) {
+            System.out.println("Error updating data: " + e.getMessage());
+        }
     }
 
     @Override
-    public void delete(int id) {
+    public void deleteItem(int id) {
+        String query = "DELETE FROM items WHERE id_item = ?";
+        try (Connection conn = MySQLConnection.getInstance().getConnection();
+            PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+            System.out.println("Item removed.");
 
+        } catch (SQLException e) {
+            System.out.println("Error removing room from DB. " + e.getMessage());
+        }
     }
 }
 
