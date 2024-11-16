@@ -57,7 +57,6 @@ public class RoomManager {
         return roomList;
     }
 
-
     public void deleteRoom(){
         System.out.println("List of rooms in the DB:");
         List<Room> roomList = roomDao.showAll();
