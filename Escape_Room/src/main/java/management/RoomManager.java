@@ -68,7 +68,7 @@ public class RoomManager {
 
     public void deleteRoom(){
         System.out.println("List of rooms in the DB:");
-        List<Room> roomList = roomDao.showAll();
+        List<Room> roomList = roomDao.getAllRooms();
         if (roomList.isEmpty()) {
             System.out.println("No rooms found in the DB.");
         }

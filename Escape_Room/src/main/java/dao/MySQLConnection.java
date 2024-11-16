@@ -83,7 +83,7 @@ public class MySQLConnection {
     }
 
     public static String readPassword() throws IOException {
-        Path fileName = Path.of("src/Password.txt");
+        Path fileName = Path.of("Escape_Room/src/Password.txt");
         String password = Files.readString(fileName);
 
         return password;

@@ -10,6 +10,7 @@ public class Menu {
 
     public static void startMenu() throws Exception {
         final EscapeRoomController controller = new EscapeRoomController();
+        controller.createEscapeRoom();
         boolean exit = false;
 
         do {
@@ -35,7 +36,6 @@ public class Menu {
                         break;
                     case 7:
                         controller.showAllPlayers();
-                        //controller.addPlayerToRoom();
                         break;
                     case 8:
                         controller.showInventory();
@@ -50,7 +50,7 @@ public class Menu {
                         controller.getTotalTicketsPrice();
                         break;
                     case 12:
-                        method3();
+                        controller.addPlayerToRoom();
                         break;
                     case 13:
                         method3();

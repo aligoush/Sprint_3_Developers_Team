@@ -3,10 +3,7 @@ package controllers;
 import dao.EscapeRoomDAOImpl;
 import exceptions.NoAvailableCluesException;
 import exceptions.NoAvailableDecosException;
-import management.ItemManager;
-import management.PlayerManager;
-import management.RoomManager;
-import management.TicketManager;
+import management.*;
 import model.entities.EscapeRoom;
 import utils.InputUtils;
 
@@ -18,9 +15,11 @@ public class EscapeRoomController {
     private ItemManager itemManager;
     private PlayerManager playerManager;
     private TicketManager ticketManager;
+    private EscapeRoomManager escapeRoomManager;
 
     public EscapeRoomController(){
         this.escapeRoom = EscapeRoom.getInstance();
+        this.escapeRoomManager = EscapeRoomManager.getInstance();
         this.roomManager = RoomManager.getInstance(this.escapeRoom);
         this.erdao = new EscapeRoomDAOImpl();
         this.itemManager = ItemManager.getInstance(this.roomManager);
@@ -28,18 +27,19 @@ public class EscapeRoomController {
         this.ticketManager= TicketManager.getInstance();
     }
 
+    public void createEscapeRoom(){
+        escapeRoomManager.createEscapeRoom(this.escapeRoom);
+    }
+
     public void createRoom() throws Exception {
-        erdao.add(this.escapeRoom);
         roomManager.createRoom();
     }
 
     public void createClue() {
-        erdao.add(this.escapeRoom);
         itemManager.createClue();
     }
 
     public void createDecoration() {
-        erdao.add(this.escapeRoom);
         itemManager.createDecoration();
     }
 
@@ -60,7 +60,6 @@ public class EscapeRoomController {
     }
 
     public void createPlayer(){
-        erdao.add(this.escapeRoom);
         playerManager.createPlayer();
     }
 

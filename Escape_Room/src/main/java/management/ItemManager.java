@@ -123,24 +123,24 @@ public class ItemManager {
             }
         }
 
-        List<Room> rooms = roomManager.showRooms();
-        Room selectedRoom = null;
-        int idRoom = 0;
-        while (selectedRoom == null){
-            idRoom = InputUtils.readInt("Choose the Room ID you want to add the decoration to: ");
-            int finalIdRoom = idRoom;
-            selectedRoom = rooms.stream()
-                    .filter(room -> room.getId() == finalIdRoom)
-                    .findFirst()
-                    .orElse(null);
-            if (selectedRoom == null){
-                System.out.println("Invalid ID Room. Try again.");
-            }
-        }
-
-        //List<Room> rooms = roomManager.showRooms();
-        //int idRoom = InputUtils.readInt("Choose the Room ID you want to add the decoration to: ");
-        itemDao.updateItemRoom(idDeco, idRoom);
+//        roomManager.showAllRooms();
+//        Room selectedRoom = null;
+//        int idRoom = 0;
+//        while (selectedRoom == null){
+//            idRoom = InputUtils.readInt("Choose the Room ID you want to add the decoration to: ");
+//            int finalIdRoom = idRoom;
+//            selectedRoom = rooms.stream()
+//                    .filter(room -> room.getId() == finalIdRoom)
+//                    .findFirst()
+//                    .orElse(null);
+//            if (selectedRoom == null){
+//                System.out.println("Invalid ID Room. Try again.");
+//            }
+//        }
+//
+//        //List<Room> rooms = roomManager.showRooms();
+//        //int idRoom = InputUtils.readInt("Choose the Room ID you want to add the decoration to: ");
+//        itemDao.updateItemRoom(idDeco, idRoom);
 
     }
 
