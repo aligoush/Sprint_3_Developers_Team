@@ -31,13 +31,13 @@ public class Menu {
                     controller.createPlayer();
                     break;
                 case 7:
-                    method3();
+                    controller.addPlayerToRoom();
                     break;
                 case 8:
                     controller.showInventory();
                     break;
                 case 9:
-                    method3();
+                    controller.delete();
                     break;
                 case 10:
                     method3();
@@ -46,9 +46,12 @@ public class Menu {
                     method3();
                     break;
                 case 12:
-                    method3();
+                    controller.showAllPlayers();
                     break;
                 case 13:
+                    method3();
+                    break;
+                case 14:
                     method3();
                     break;
                 case 0:
@@ -63,23 +66,24 @@ public class Menu {
         Scanner entrada = new Scanner(System.in);
         byte option;
         final byte MINIMO = 0;
-        final byte MAXIMO = 13;
+        final byte MAXIMO = 14;
 
         do {
             System.out.println("\nMenu:");
             System.out.println("1. Create room");
             System.out.println("2. Create clue"); // do you want to add clue to the room?
             System.out.println("3. Add clue to the room");
-            System.out.println("4. Create decoration?");
+            System.out.println("4. Create decoration");
             System.out.println("5. Add decoration to the room");
             System.out.println("6. Create player");
             System.out.println("7. Add player to the room");
-            System.out.println("8. Show inventory");
-            System.out.println("9. Remove room or items");
-            System.out.println("10. Generate ticket");
-            System.out.println("11. Calculate total value of tickets");
-            System.out.println("12. Notify subscribed members");
-            System.out.println("13. Generate certificates of player");
+            System.out.println("8. Show players");
+            System.out.println("9. Show inventory");
+            System.out.println("10. Remove room or items");
+            System.out.println("11. Generate ticket");
+            System.out.println("12. Calculate total value of tickets");
+            System.out.println("13. Notify subscribed members");
+            System.out.println("14. Generate certificates of player");
 
             option = entrada.nextByte();
             if (option < MINIMO || option > MAXIMO) {

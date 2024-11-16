@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -9,7 +10,7 @@ public class InputUtils {
     private static Scanner input = new Scanner(System.in);
 
     public static boolean readBoolean(String message) {
-        boolean data = true;
+        boolean data = false;
         boolean dataOk = false;
         String answer = "";
 
@@ -18,8 +19,8 @@ public class InputUtils {
                 System.out.println(message);
                 answer = input.nextLine();
                 if (answer.equalsIgnoreCase("yes")) {
+                    data = true;
                     dataOk = true;
-                    data = false;
                 } else if (answer.equalsIgnoreCase("no")) {
                     dataOk = true;
                 }
@@ -131,5 +132,28 @@ public class InputUtils {
             }
         }
         return email;
+    }
+
+    public static int readID(String message, List<Integer> ids) {
+        int data = 0;
+        boolean idExists = false;
+
+        while (!idExists) {
+            try {
+                System.out.println(message);
+                data = input.nextInt();
+                if(ids.contains(data)){
+                    idExists = true;
+                } else {
+                    System.out.println("There is no such ID found, try again.");
+                }
+            } catch (InputMismatchException e) {
+                System.err.println("Format error. Please, try again.");
+                input.nextLine();
+            } finally {
+                input.nextLine();
+            }
+        }
+        return data;
     }
 }

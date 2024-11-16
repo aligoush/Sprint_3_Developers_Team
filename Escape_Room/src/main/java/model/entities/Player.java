@@ -7,7 +7,8 @@ public class Player {
     private boolean subscription;
     private String email;
 
-    public Player(String name, boolean subscription, String email) {
+    public Player(int idPlayer, String name, boolean subscription, String email) {
+        this.idPlayer = idPlayer;
         this.name = name;
         this.subscription = subscription;
         this.email = email;
@@ -52,10 +53,10 @@ public class Player {
     @Override
     public String toString() {
         return "Player{" +
-                "idPlayer=" + idPlayer +
-                ", name='" + name + '\'' +
-                ", subscription=" + subscription +
-                ", email='" + email + '\'' +
+                "id = " + idPlayer +
+                ", name = '" + name + '\'' +
+                ", subscription = " + subscription +
+                ", email = '" + email + '\'' +
                 '}';
     }
 }

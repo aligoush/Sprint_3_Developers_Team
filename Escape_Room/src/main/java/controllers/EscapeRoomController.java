@@ -46,7 +46,7 @@ public class EscapeRoomController {
     }
 
     public void showInventory(){
-        roomManager.showInventoryRooms();
+        roomManager.showAllRooms();
         itemManager.showInventoryClues();
         itemManager.showInventoryDecos();
     }
@@ -54,5 +54,17 @@ public class EscapeRoomController {
     public void createPlayer(){
         erdao.add(this.escapeRoom);
         playerManager.createPlayer();
+    }
+
+    public void showAllPlayers() {
+        playerManager.showAllPlayers();
+    }
+
+    public void addPlayerToRoom() {
+        playerManager.showAllPlayers();
+        int idPlayer = playerManager.getPlayerID();
+        roomManager.showAllRooms();
+        int idRoom = roomManager.getRoomID();
+        playerManager.assignPlayerToRoom(idPlayer, idRoom);
     }
 }

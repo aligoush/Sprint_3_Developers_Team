@@ -6,8 +6,7 @@ import java.util.List;
 
 public interface RoomDAO {
     //Room findById(int id);
-    List<Room> showAll();
-
+    List<Room> getAllRooms();
     void createRoom(Room room);
 
     //void update(Room room);

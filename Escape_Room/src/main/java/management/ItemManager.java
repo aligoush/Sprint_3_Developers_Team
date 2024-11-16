@@ -56,7 +56,7 @@ public class ItemManager {
         List<Item> clues = itemDao.showAvailableClues();
         System.out.println(clues);
         int idClue = InputUtils.readInt("Clue id to add: ");
-        List<Room> rooms = roomManager.showRooms();
+        roomManager.showAllRooms();
         int idRoom = InputUtils.readInt("Room id to add the clue: ");
         itemDao.updateClueRoom(idClue, idRoom);
 
@@ -73,7 +73,7 @@ public class ItemManager {
         List<Item> decos = itemDao.showAvailableDecos();
         System.out.println(decos);
         int idDeco = InputUtils.readInt("Decoration id to add: ");
-        List<Room> rooms = roomManager.showRooms();
+        roomManager.showAllRooms();
         int idRoom = InputUtils.readInt("Room id to add the decoration: ");
         itemDao.updateDecoRoom(idDeco, idRoom);
 

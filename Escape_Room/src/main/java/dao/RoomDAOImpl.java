@@ -36,7 +36,7 @@ public class RoomDAOImpl implements RoomDAO {
     */
 
     @Override
-    public List<Room> showAll() {
+    public List<Room> getAllRooms() {
         List<Room> rooms = new ArrayList<>();
         String query = "SELECT * FROM rooms";
         try (Connection connection = MySQLConnection.getInstance().getConnection();
