@@ -2,6 +2,8 @@ package management;
 
 import dao.impl.RoomDAOImpl;
 import enums.Thematic;
+import exceptions.NoAvailableDecosException;
+import exceptions.NoAvailableRoomsException;
 import model.entities.EscapeRoom;
 import model.entities.Room;
 import utils.InputUtils;
@@ -27,7 +29,11 @@ public class RoomManager {
     }
     public void createRoom(){
         String name = InputUtils.readString("Name of the room: ");
-        int difficulty = InputUtils.readInt("Difficulty: ");
+        int difficulty;
+        do {
+            difficulty = InputUtils.readInt("Difficulty, enter the number between 1-5: ");
+        } while (difficulty < 1 || difficulty > 5);
+
         int id = 1;
         Thematic thematic = InputUtils.readEnum("Choose thematic: ", Thematic.class);
         double price = InputUtils.readDouble("Price of the room: ");
@@ -65,18 +71,24 @@ public class RoomManager {
         return roomsIds;
     }
 
-    public void showAllRooms(){
+    public void showAllRooms() throws NoAvailableRoomsException {
         System.out.println("List of rooms in the DB:");
         List<Room> rooms = roomDao.getAllRooms();
+        if (rooms.isEmpty()){
+            throw new NoAvailableRoomsException("There are no rooms in the DB. Create a new one.");
+        }
         for (Room room : rooms) {
             System.out.println(room);
         }
     }
 
-    public void showRoomsByThematic(Thematic thematic) {
+    public void showRoomsByThematic(Thematic thematic) throws NoAvailableRoomsException {
         System.out.println("List of rooms in the DB with thematic: " + thematic);
         List<Room> rooms = null;
         rooms = roomDao.getRoomsByThematic(Thematic.valueOf(thematic.name()));
+        if (rooms.isEmpty()){
+            throw new NoAvailableRoomsException("There are no rooms in the DB with " + thematic + " thematic.");
+        }
         for (Room room : rooms) {
             System.out.println(room);
         }

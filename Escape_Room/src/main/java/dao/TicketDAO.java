@@ -4,6 +4,6 @@ import model.entities.Ticket;
 import java.util.List;
 
 public interface TicketDAO {
-    void createTicket(Ticket ticket, int idRoom) ;
+    int createTicket(Ticket ticket, int idRoom) ;
     double getTotalTicketsPrice();
 }

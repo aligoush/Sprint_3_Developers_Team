@@ -8,12 +8,11 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void startMenu() throws Exception {
+    public static void startMenu(){
         final EscapeRoomController controller = new EscapeRoomController();
         controller.createEscapeRoom();
         boolean exit = false;
         do {
-            try {
                 switch (menu()) {
                     case 1:
                         controller.createRoom();
@@ -54,18 +53,11 @@ public class Menu {
                     case 13:
 
                         break;
-                    case 14:
-                        //method3();
-                        break;
                     case 0:
                         System.out.println("Finishing the program...");
                         exit = true;
                         break;
                 }
-           } catch (NoAvailableCluesException | NoAvailableDecosException e) {
-                System.out.println(e.getMessage());
-                System.out.println("Returning to the main menu...");
-            }
         } while (!exit);
     }
 
@@ -78,7 +70,7 @@ public class Menu {
         do {
             System.out.println("\nMenu:");
             System.out.println("1. Create room");
-            System.out.println("2. Create clue"); // do you want to add clue to the room?
+            System.out.println("2. Create clue");
             System.out.println("3. Add clue to the room");
             System.out.println("4. Create decoration");
             System.out.println("5. Add decoration to the room");
@@ -101,15 +93,6 @@ public class Menu {
 }
 
 
-//create clue and add clue to the room (muestra todos las pistas (el nombre e id) y el user selecciona id de la pista)
-//add clue to the room
-//create decoration and add it to the room (lo mismo)
-//add the decoration to the room
-//create player
-//add player to the room (player is playing in the room) (muestra todos los players, escoge el id, y muestra todos los rooms disponibles, escoges el id de room)
-//        show rooms, clues, decos  (muestra el inventario de todo, además de las cantidades -> cuántas pistas y decos, rooms hay)
-//        remove room, clue, deco (elimina room, clue y deco se desvinculan y no se borran. Primero debería de mostrar todo lo que hay disponible y luego borrarlo)
-//generate tickets (que muestren jugadores, seleccionas, y luego muestras rooms disponibles y seleccionas)
-//calculate total tickets
+
 //notify subscribed members (observer o callback)
 //generate certificates(muestre todos los jugadores, y seleccionas al jugador, luego miras los rooms en las que ha jugado y seleccionas room), (en el certificado saldrán las pistas que ha usado el jugador, la sala con su dificultad y temática)

@@ -8,8 +8,8 @@ import java.sql.*;
 
 public class TicketDAOImpl implements TicketDAO {
     @Override
-    public void createTicket(Ticket ticket, int idRoom) {
-        String calculatePrice = "SELECT r.base_price + SUM(i.price) FROM rooms r INNER JOIN items i ON r.id_room = i.id_room WHERE r.id_room = ? ";
+    public int createTicket(Ticket ticket, int idRoom) {
+        String calculatePrice = "SELECT r.base_price + IFNULL(SUM(i.price), 0)  FROM rooms r LEFT JOIN items i ON r.id_room = i.id_room WHERE r.id_room = ? ";
         String insertQuery = "INSERT INTO tickets (sale_date, total_price, id_player) VALUES (?,?,?)";
 
         try (
@@ -44,6 +44,7 @@ public class TicketDAOImpl implements TicketDAO {
         } catch (SQLException e) {
             System.out.println("Error inserting the room into DB. " + e.getMessage());
         }
+        return ticket.getIdTicket();
     }
 
     public double getTotalTicketsPrice() {

@@ -30,8 +30,8 @@ public class Decoration extends Item {
 
     @Override
     public String toString() {
-        return "\nDecoration: " + super.toString() + ", material=" + material +
-                '}' + "\n";
+        return "Decoration: " + super.toString() + ", material=" + material +
+                '}';
     }
 }
 

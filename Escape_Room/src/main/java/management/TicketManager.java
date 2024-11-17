@@ -21,11 +21,11 @@ public class TicketManager {
         return instance;
     }
 
-    public void createTicket(int idPlayer, int idRoom){
+    public int createTicket(int idPlayer, int idRoom){
 
         Ticket ticket = new Ticket(idPlayer);
-        ticketDAO.createTicket(ticket, idRoom);
-
+        int idTicket = ticketDAO.createTicket(ticket, idRoom);
+        return idTicket;
     }
 
     public double getTotalTicketsPrice() {

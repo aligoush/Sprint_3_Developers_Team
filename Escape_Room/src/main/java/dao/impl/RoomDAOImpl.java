@@ -12,7 +12,6 @@ import java.util.List;
 
 public class RoomDAOImpl implements RoomDAO {
 
-
     @Override
     public List<Room> getAllRooms() {
         List<Room> rooms = new ArrayList<>();
@@ -20,14 +19,11 @@ public class RoomDAOImpl implements RoomDAO {
         try (Connection connection = MySQLConnection.getInstance().getConnection();
              Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
-            if (rs.wasNull()){
-                throw new NoAvailableRoomsException("Error. There are no rooms available in the DB.");
-            }
             while (rs.next()) {
                 rooms.add(new Room(rs.getInt("id_room"), rs.getString("name"),
                         Thematic.valueOf(rs.getString("thematic").toUpperCase()), rs.getInt("difficulty"), rs.getDouble("base_price"), rs.getInt("id_escape_room")));
             }
-        } catch (SQLException | NoAvailableRoomsException e) {
+        } catch (SQLException e) {
             System.out.println("Error extracting data: " + e.getMessage());
         }
         return rooms;

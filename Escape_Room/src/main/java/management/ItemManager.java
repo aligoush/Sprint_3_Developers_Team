@@ -6,6 +6,7 @@ import enums.MaterialType;
 import enums.Thematic;
 import enums.Type;
 import exceptions.NoAvailableCluesException;
+import exceptions.NoAvailableDecosException;
 import model.entities.*;
 import utils.InputUtils;
 
@@ -64,26 +65,35 @@ public class ItemManager {
         }
     }
 
-    public void showAvailableClues() {
+    public void showAvailableClues() throws NoAvailableCluesException {
         System.out.println("Clues in the DB with idRoom(NULL):");
         List<Clue> clues = itemDao.getAvailableClues();
+        if (clues.isEmpty()){
+            throw new NoAvailableCluesException("There are no available clues in the DB.");
+        }
         for (Clue clue : clues) {
             System.out.println(clue);
         }
     }
 
-    public void showAllDecos(){
+    public void showAllDecos() throws NoAvailableDecosException {
         System.out.println("Decorations in the DB:");
         List<Decoration> decos = itemDao.getAllDecos();
+        if (decos.isEmpty()){
+            throw new NoAvailableDecosException("There are no decorations in the DB. Please, create a new one.");
+        }
         for (Decoration decoration: decos) {
             System.out.println(decoration);
         }
     }
 
 
-    public void showAvailableDecos() {
+    public void showAvailableDecos() throws NoAvailableDecosException {
         System.out.println("Decorations in the DB with idRoom(NULL):");
         List<Decoration> decos = itemDao.getAvailableDecos();
+        if (decos.isEmpty()){
+            throw new NoAvailableDecosException("There are no available decorations in the DB.");
+        }
         for (Decoration decoration : decos) {
             System.out.println(decoration);
         }
@@ -154,7 +164,6 @@ public class ItemManager {
         return decosIds;
     }
 
-
     public void assignClueToRoom(int idClue, int idRoom){
         itemDao.assignItemRoom(idClue, idRoom);
     }
@@ -162,7 +171,6 @@ public class ItemManager {
     public void assignDecoToRoom(int idDeco, int idRoom){
         itemDao.assignItemRoom(idDeco, idRoom);
     }
-
 
     public void deleteItem(int id) {
         itemDao.deleteItem(id);

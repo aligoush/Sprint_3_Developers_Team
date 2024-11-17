@@ -1,6 +1,8 @@
 package management;
 
 import dao.impl.PlayerDAOImpl;
+import exceptions.NoAvailablePlayersException;
+import exceptions.NoAvailableRoomsException;
 import model.entities.Player;
 import utils.InputUtils;
 
@@ -31,8 +33,11 @@ public class PlayerManager {
         playerDao.createPlayer(player);
     }
 
-    public void showAllPlayers() {
+    public void showAllPlayers() throws NoAvailablePlayersException {
         List<Player> players = playerDao.getAllPlayers();
+        if (players.isEmpty()){
+            throw new NoAvailablePlayersException("There are no players in the DB.");
+        }
         for (Player player : players) {
             System.out.println(player);
         }
@@ -53,7 +58,7 @@ public class PlayerManager {
         return idInput;
     }
 
-    public void assignPlayerToRoom(int idPlayer, int idRoom){
-        playerDao.assignPlayerToRoom(idPlayer, idRoom);
+    public void assignPlayerToRoom(int idPlayer, int idRoom, int idTicket){
+        playerDao.assignPlayerToRoom(idPlayer, idRoom, idTicket);
     }
 }

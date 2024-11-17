@@ -70,12 +70,12 @@ public class Room {
 
     @Override
     public String toString() {
-        return "\nRoom{" +
+        return "Room{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", difficulty=" + difficulty +
                 ", base_price=" + basePrice +
                 ", thematic='" + thematic + '\'' +
-                '}' + "\n";
+                '}';
     }
 }

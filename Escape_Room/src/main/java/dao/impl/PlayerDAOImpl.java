@@ -65,8 +65,8 @@ public class PlayerDAOImpl implements PlayerDAO {
     }
 
     @Override
-    public void assignPlayerToRoom(int idPlayer, int idRoom) {
-        String query = "INSERT INTO player_is_playing (id_player, id_room, play_date) VALUES (?,?,?)";
+    public void assignPlayerToRoom(int idPlayer, int idRoom, int idTicket) {
+        String query = "INSERT INTO player_is_playing (id_player, id_room, id_ticket, play_date) VALUES (?,?,?,?)";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -76,7 +76,8 @@ public class PlayerDAOImpl implements PlayerDAO {
 
             stmt.setInt(1, idPlayer);
             stmt.setInt(2, idRoom);
-            stmt.setTimestamp(3, playDate);
+            stmt.setInt(3, idTicket);
+            stmt.setTimestamp(4, playDate);
 
             stmt.executeUpdate();
             System.out.println("Player was successfully added to the room");
@@ -84,5 +85,4 @@ public class PlayerDAOImpl implements PlayerDAO {
             System.out.println("Error assigning player to the room. " + e.getMessage());
         }
     }
-
 }
