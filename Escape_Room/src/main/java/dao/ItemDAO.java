@@ -7,13 +7,15 @@ import model.entities.Item;
 import java.util.List;
 
 public interface ItemDAO {
-    List<Clue> showAvailableClues();
-    List<Decoration> showAvailableDecos();
-    List<Clue> showAllClues();
-    List<Decoration> showAllDecos();
+    List<Clue> getAvailableClues();
+    Clue getClueByID(int id);
+    List<Clue> getAllClues();
+    List<Decoration> getAvailableDecos();
+    List<Decoration> getAllDecos();
     void create(Item item);
-    //void updateClueRoom(int idClue, int idRoom);
-    //void updateDecoRoom(int idDeco, int idRoom);
-    void updateItemRoom(int id, int idRoom);
+    int createItem(Item item);
+    void createClue(Clue clue, int idItem);
+    void createDecoration(Decoration deco, int idItem);
+    void assignItemRoom(int id, int idRoom);
     void deleteItem(int id);
 }

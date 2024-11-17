@@ -21,6 +21,10 @@ public class Clue extends Item {
         this.details = details;
     }
 
+    public Clue() {
+        super();
+    }
+
 
     public Thematic getThematic() {
         return thematic;
@@ -40,9 +44,9 @@ public class Clue extends Item {
 
     @Override
     public String toString() {
-        return "\nClue: " + super.toString() +
+        return "Clue: " + super.toString() +
                 ", thematic=" + thematic +
                 ", details='" + details + '\'' +
-                '}' + "\n";
+                '}';
     }
 }

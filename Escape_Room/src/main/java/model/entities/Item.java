@@ -25,6 +25,10 @@ public abstract class Item {
         this.type = type;
     }
 
+    public Item() {
+
+    }
+
     public int getId() {
         return id;
     }
