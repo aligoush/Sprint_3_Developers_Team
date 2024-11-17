@@ -16,7 +16,7 @@ public class ItemDAOImpl implements ItemDAO {
 
 
     @Override
-    public List<Clue> showAvailableClues() {
+    public List<Clue> getAvailableClues() {
         List<Clue> clues = new ArrayList<>();
         String query = "SELECT items.*, clues.thematic, clues.details FROM items INNER JOIN clues ON clues.id_item = items.id_item WHERE items.type = 'CLUE' AND items.id_room IS NULL";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
@@ -44,7 +44,27 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public List<Clue> showAllClues() {
+    public Clue getClueByID(int id){
+        Clue clue = new Clue();
+        String query = "SELECT clues.* FROM clues WHERE clues.id_item = ?";
+        try (Connection conn = MySQLConnection.getInstance().getConnection(); PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setInt(1,id);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                Thematic thematic = Thematic.valueOf(rs.getString("thematic"));
+                clue.setId(rs.getInt("id_item"));
+                clue.setThematic(thematic);
+                clue.setDetails(rs.getString("details"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error extracting data: " + e.getMessage());
+        }
+        return clue;
+    }
+
+    @Override
+    public List<Clue> getAllClues() {
         List<Clue> clues = new ArrayList<>();
         String query = "SELECT items.*, clues.thematic, clues.details FROM items INNER JOIN clues ON clues.id_item = items.id_item WHERE items.type = 'CLUE'";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
@@ -72,7 +92,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public List<Decoration> showAvailableDecos() {
+    public List<Decoration> getAvailableDecos() {
         List<Decoration> decos = new ArrayList<>();
         String query = "SELECT items.*, decorations.material_type FROM items INNER JOIN decorations ON decorations.id_item = items.id_item AND items.id_room IS NULL";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
@@ -99,7 +119,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public List<Decoration> showAllDecos() {
+    public List<Decoration> getAllDecos() {
         List<Decoration> decos = new ArrayList<>();
         String query = "SELECT items.*, decorations.material_type FROM items INNER JOIN decorations ON decorations.id_item = items.id_item WHERE items.type = 'DECORATION'";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
@@ -135,7 +155,7 @@ public class ItemDAOImpl implements ItemDAO {
         }
     }
 
-
+    @Override
     public int createItem(Item item) {
         int idItem = 0;
         String query = "INSERT INTO items (name_item, price, id_room, type) VALUES (?,?,?,?)";
@@ -163,6 +183,8 @@ public class ItemDAOImpl implements ItemDAO {
         return idItem;
     }
 
+
+    @Override
     public void createClue(Clue clue, int idItem) {
         String query = "INSERT INTO clues (id_item, thematic, details) VALUES (?,?,?)";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
@@ -179,6 +201,7 @@ public class ItemDAOImpl implements ItemDAO {
         }
     }
 
+    @Override
     public void createDecoration(Decoration deco, int idItem) {
         String query = "INSERT INTO decorations (id_item, material_type) VALUES (?,?)";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
@@ -195,35 +218,8 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
 
-    /*public void updateClueRoom(int idClue, int idRoom) {
-        String query = "UPDATE items SET id_room = ? WHERE id_item = ?";
-        try (Connection conn = MySQLConnection.getInstance().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, idRoom);
-            stmt.setInt(2, idClue);
-
-            int rowsAffected = stmt.executeUpdate();
-            System.out.println(rowsAffected);
-        } catch (SQLException e) {
-            System.out.println("Error updating data: " + e.getMessage());
-        }
-    }
-
-    public void updateDecoRoom(int idDeco, int idRoom) {
-        String query = "UPDATE items SET id_room = ? WHERE id_item = ?";
-        try (Connection conn = MySQLConnection.getInstance().getConnection();
-             PreparedStatement stmt = conn.prepareStatement(query)) {
-            stmt.setInt(1, idRoom);
-            stmt.setInt(2, idDeco);
-
-            int rowsAffected = stmt.executeUpdate();
-            System.out.println("Registros afectados: " + rowsAffected);
-        } catch (SQLException e) {
-            System.out.println("Error updating data: " + e.getMessage());
-        }
-    }*/
-
-    public void updateItemRoom(int id, int idRoom) {
+    @Override
+    public void assignItemRoom(int id, int idRoom) {
         String query = "UPDATE items SET id_room = ? WHERE id_item = ?";
         try (Connection conn = MySQLConnection.getInstance().getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -231,7 +227,7 @@ public class ItemDAOImpl implements ItemDAO {
             stmt.setInt(2, id);
 
             int rowsAffected = stmt.executeUpdate();
-            System.out.println("Registros afectados: " + rowsAffected);
+            System.out.println("Rows affected: " + rowsAffected);
         } catch (SQLException e) {
             System.out.println("Error updating data: " + e.getMessage());
         }

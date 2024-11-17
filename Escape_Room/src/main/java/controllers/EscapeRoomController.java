@@ -1,8 +1,7 @@
 package controllers;
 
 import dao.EscapeRoomDAOImpl;
-import exceptions.NoAvailableCluesException;
-import exceptions.NoAvailableDecosException;
+import enums.Thematic;
 import management.*;
 import model.entities.EscapeRoom;
 import utils.InputUtils;
@@ -43,20 +42,29 @@ public class EscapeRoomController {
         itemManager.createDecoration();
     }
 
-    public void addClueToRoom() throws NoAvailableCluesException {
-        itemManager.showAvailableClues();
+    public void addClueToRoom() {
+            itemManager.showAvailableClues();
+            int idClue = itemManager.getAvailableClueID();
+            Thematic thematic = itemManager.getThematicClueByID(idClue);
+            roomManager.showRoomsByThematic(thematic);
+            int idRoom = roomManager.getRoomIDByThematic(thematic);
+            itemManager.assignClueToRoom(idClue, idRoom);
     }
 
-    public void addDecoToRoom() throws NoAvailableDecosException {
+    public void addDecoToRoom() {
         itemManager.showAvailableDecos();
+        int idDeco = itemManager.getAvailableDecoID();
+        roomManager.showAllRooms();
+        int idRoom = roomManager.getRoomID();
+        itemManager.assignDecoToRoom(idDeco, idRoom);
     }
 
     public void showInventory(){
         roomManager.showAllRooms();
         String enter = InputUtils.readString("Enter to continue.");
-        itemManager.showInventoryClues();
+        itemManager.showAllClues();
         enter = InputUtils.readString("Enter to continue.");
-        itemManager.showInventoryDecos();
+        itemManager.showAllDecos();
     }
 
     public void createPlayer(){
@@ -75,20 +83,26 @@ public class EscapeRoomController {
         playerManager.assignPlayerToRoom(idPlayer, idRoom);
     }
 
-    public void delete() throws NoAvailableCluesException, NoAvailableDecosException {
+    public void delete() {
         int option = InputUtils.readInt("Choose an option to delete:\n" +
                 "1. Room\n" +
                 "2. Clue\n" +
                 "3. Decoration");
         switch (option){
             case 1:
-                roomManager.deleteRoom();
+                roomManager.showAllRooms();
+                int idRoom = roomManager.getRoomID();
+                roomManager.deleteRoom(idRoom);
                 break;
             case 2:
-                itemManager.deleteClue();
+                itemManager.showAllClues();
+                int idClue = itemManager.getClueID();
+                itemManager.deleteItem(idClue);
                 break;
             case 3:
-                itemManager.deleteDeco();
+                itemManager.showAllDecos();
+                int idDeco = itemManager.getDecoID();
+                itemManager.deleteItem(idDeco);
                 break;
         }
     }

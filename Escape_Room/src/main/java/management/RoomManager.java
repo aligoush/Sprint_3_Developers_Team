@@ -50,45 +50,39 @@ public class RoomManager {
         return idInput;
     }
 
+    public int getRoomIDByThematic(Thematic thematic){
+        List<Integer> ids = getRoomsIDByThematic(thematic);
+        int idInput = InputUtils.readID("Enter the ID of the room: ", ids);
+        return idInput;
+    }
+
+    public List<Integer> getRoomsIDByThematic(Thematic thematic){
+        List<Room> rooms = roomDao.getRoomsByThematic(thematic);
+        List<Integer> roomsIds = new ArrayList<>();
+        for(Room room: rooms){
+            roomsIds.add(room.getId());
+        }
+        return roomsIds;
+    }
+
     public void showAllRooms(){
         System.out.println("List of rooms in the DB:");
-        List<Room> roomList = roomDao.getAllRooms();
-        System.out.println(roomList);
+        List<Room> rooms = roomDao.getAllRooms();
+        for (Room room : rooms) {
+            System.out.println(room);
+        }
     }
 
-    public List<Room> showRoomsByTheme(Thematic thematic){
+    public void showRoomsByThematic(Thematic thematic) {
         System.out.println("List of rooms in the DB with thematic: " + thematic);
-        List<Room> roomList = roomDao.showRoomsByThematic(Thematic.valueOf(thematic.name()));
-        if (roomList.isEmpty()) {
-            System.out.println("No rooms found with matching thematic.");
+        List<Room> rooms = null;
+        rooms = roomDao.getRoomsByThematic(Thematic.valueOf(thematic.name()));
+        for (Room room : rooms) {
+            System.out.println(room);
         }
-        System.out.println(roomList);
-        return roomList;
     }
 
-    public void deleteRoom(){
-        System.out.println("List of rooms in the DB:");
-        List<Room> roomList = roomDao.getAllRooms();
-        if (roomList.isEmpty()) {
-            System.out.println("No rooms found in the DB.");
-        }
-
-        System.out.println(roomList);
-
-        Room selectedRoom = null;
-        int idRoom = 0;
-        while (selectedRoom == null){
-            idRoom = InputUtils.readInt("Choose the Room ID you want to delete: ");
-            int finalIdRoom = idRoom;
-            selectedRoom = roomList.stream()
-                    .filter(room -> room.getId() == finalIdRoom)
-                    .findFirst()
-                    .orElse(null);
-            if (selectedRoom == null){
-                System.out.println("Invalid ID Room. Try again.");
-            }
-        }
-
-        roomDao.delete(idRoom);
+    public void deleteRoom(int id){
+        roomDao.delete(id);
     }
 }

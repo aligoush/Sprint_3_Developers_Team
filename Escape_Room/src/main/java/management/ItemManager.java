@@ -6,10 +6,10 @@ import enums.MaterialType;
 import enums.Thematic;
 import enums.Type;
 import exceptions.NoAvailableCluesException;
-import exceptions.NoAvailableDecosException;
 import model.entities.*;
 import utils.InputUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ItemManager {
@@ -53,155 +53,119 @@ public class ItemManager {
         itemDao.create(decoration);
     }
 
-    public void showAvailableClues() throws NoAvailableCluesException {
+    public void showAllClues() throws NoAvailableCluesException {
+        System.out.println("Clues in the DB:");
+        List<Clue> clues = itemDao.getAllClues();
+        if (clues.isEmpty()){
+            throw new NoAvailableCluesException("There are no clues in the DB. Please, create a new one.");
+        }
+        for (Clue clue : clues) {
+            System.out.println(clue);
+        }
+    }
+
+    public void showAvailableClues() {
         System.out.println("Clues in the DB with idRoom(NULL):");
-        List<Clue> clues = itemDao.showAvailableClues();
-        if (clues.isEmpty()){
-            throw new NoAvailableCluesException("Error. There are no available clues in the DB. You must create a new clue.");
+        List<Clue> clues = itemDao.getAvailableClues();
+        for (Clue clue : clues) {
+            System.out.println(clue);
         }
-
-        System.out.println(clues);
-
-        Clue selectedClue = null;
-        int idClue = 0;
-        while (selectedClue == null) {
-            idClue = InputUtils.readInt("Choose the Clue ID you want to add: ");
-            int finalIdClue = idClue;
-            selectedClue = clues.stream()
-                    .filter(clue -> clue.getId() == finalIdClue)
-                    .findFirst()
-                    .orElse(null);
-            if (selectedClue == null){
-                System.out.println("Invalid ID Clue. Try again.");
-            }
-        }
-
-        List<Room> rooms = roomManager.showRoomsByTheme(selectedClue.getThematic());
-        Room selectedRoom = null;
-        int idRoom = 0;
-        while (selectedRoom == null){
-            idRoom = InputUtils.readInt("Choose the Room ID you want to add the clue to: ");
-            int finalIdRoom = idRoom;
-            selectedRoom = rooms.stream()
-                    .filter(room -> room.getId() == finalIdRoom)
-                    .findFirst()
-                    .orElse(null);
-            if (selectedRoom == null){
-                System.out.println("Invalid ID Room. Try again.");
-            }
-        }
-
-        itemDao.updateItemRoom(idClue, idRoom);
     }
 
-    public void showInventoryClues(){
-        System.out.println("Clues in the DB:");
-        List<Clue> clues = itemDao.showAllClues();
-        System.out.println(clues);
+    public void showAllDecos(){
+        System.out.println("Decorations in the DB:");
+        List<Decoration> decos = itemDao.getAllDecos();
+        for (Decoration decoration: decos) {
+            System.out.println(decoration);
+        }
     }
 
-    public void showAvailableDecos() throws NoAvailableDecosException {
+
+    public void showAvailableDecos() {
         System.out.println("Decorations in the DB with idRoom(NULL):");
-        List<Decoration> decos = itemDao.showAvailableDecos();
-        if (decos.isEmpty()){
-            throw new NoAvailableDecosException("Error. There are no available decorations in the DB. You must create a new decoration.");
+        List<Decoration> decos = itemDao.getAvailableDecos();
+        for (Decoration decoration : decos) {
+            System.out.println(decoration);
         }
-
-        System.out.println(decos);
-
-        Decoration selectedDeco = null;
-        int idDeco = 0;
-        while (selectedDeco == null){
-            idDeco = InputUtils.readInt("Choose the Decoration ID you want to add: ");
-            int finalIdDeco = idDeco;
-            selectedDeco = decos.stream()
-                    .filter(decoration -> decoration.getId() == finalIdDeco)
-                    .findFirst()
-                    .orElse(null);
-            if (selectedDeco == null){
-                System.out.println("Invalid ID Decoration. Try again.");
-            }
-        }
-
-//        roomManager.showAllRooms();
-//        Room selectedRoom = null;
-//        int idRoom = 0;
-//        while (selectedRoom == null){
-//            idRoom = InputUtils.readInt("Choose the Room ID you want to add the decoration to: ");
-//            int finalIdRoom = idRoom;
-//            selectedRoom = rooms.stream()
-//                    .filter(room -> room.getId() == finalIdRoom)
-//                    .findFirst()
-//                    .orElse(null);
-//            if (selectedRoom == null){
-//                System.out.println("Invalid ID Room. Try again.");
-//            }
-//        }
-//
-//        //List<Room> rooms = roomManager.showRooms();
-//        //int idRoom = InputUtils.readInt("Choose the Room ID you want to add the decoration to: ");
-//        itemDao.updateItemRoom(idDeco, idRoom);
-
     }
 
-    public void showInventoryDecos(){
-        System.out.println("Decorations in the DB:");
-        List<Decoration> decos = itemDao.showAllDecos();
-        System.out.println(decos);
+    public int getClueID() {
+        List<Integer> ids = getAllCluesID();
+        int idInput = InputUtils.readID("Enter the ID of the clue: ", ids);
+        return idInput;
+    }
+
+    public List<Integer> getAllCluesID() {
+        List<Clue> clues = itemDao.getAllClues();
+        List<Integer> cluesIds = new ArrayList<>();
+        for (Clue clue : clues){
+            cluesIds.add(clue.getId());
+        }
+        return cluesIds;
+    }
+
+    public int getAvailableClueID() {
+        List<Integer> ids = getAvailableCluesID();
+        int idInput = InputUtils.readID("Enter the ID of the clue: ", ids);
+        return idInput;
+    }
+
+    public List<Integer> getAvailableCluesID() {
+        List<Clue> clues = itemDao.getAvailableClues();
+        List<Integer> cluesIds = new ArrayList<>();
+        for(Clue clue : clues){
+            cluesIds.add(clue.getId());
+        }
+        return cluesIds;
+    }
+
+    public Thematic getThematicClueByID(int idClue) {
+        Clue clue = itemDao.getClueByID(idClue);
+        return clue.getThematic();
+    }
+
+    public int getDecoID() {
+        List<Integer> ids = getAllDecosID();
+        int idInput = InputUtils.readID("Enter the ID of the decoration: ", ids);
+        return idInput;
+    }
+
+    public List<Integer> getAllDecosID() {
+        List<Decoration> decos = itemDao.getAllDecos();
+        List<Integer> decosIds = new ArrayList<>();
+        for (Decoration decoration : decos){
+            decosIds.add(decoration.getId());
+        }
+        return decosIds;
+    }
+
+    public int getAvailableDecoID() {
+        List<Integer> ids = getAvailableDecosID();
+        int idInput = InputUtils.readID("Enter the ID of the decoration: ", ids);
+        return idInput;
+    }
+
+    public List<Integer> getAvailableDecosID() {
+        List<Decoration> decos = itemDao.getAvailableDecos();
+        List<Integer> decosIds = new ArrayList<>();
+        for(Decoration decoration : decos){
+            decosIds.add(decoration.getId());
+        }
+        return decosIds;
     }
 
 
-    public void deleteClue() throws NoAvailableCluesException {
-        System.out.println("Clues in the DB:");
-        List<Clue> clues = itemDao.showAllClues();
-        if (clues.isEmpty()){
-            throw new NoAvailableCluesException("Error. There are no available clues in the DB.");
-        }
-
-        System.out.println(clues);
-
-        Clue selectedClue = null;
-        int idClue = 0;
-        while (selectedClue == null){
-            idClue = InputUtils.readInt("Choose the Clue ID you want to delete: ");
-            int finalIdClue = idClue;
-            selectedClue = clues.stream()
-                    .filter(clue -> clue.getId() == finalIdClue)
-                    .findFirst()
-                    .orElse(null);
-            if (selectedClue == null){
-                System.out.println("Invalid ID Clue. Try again.");
-            }
-        }
-
-        itemDao.deleteItem(idClue);
+    public void assignClueToRoom(int idClue, int idRoom){
+        itemDao.assignItemRoom(idClue, idRoom);
     }
 
-    public void deleteDeco() throws NoAvailableDecosException {
-        System.out.println("Decorations in the DB:");
-        List<Decoration> decos = itemDao.showAllDecos();
-        if (decos.isEmpty()){
-            throw new NoAvailableDecosException("Error. There are no decorations in the DB.");
-        }
-
-        System.out.println(decos);
-
-        Decoration selectedDeco = null;
-        int idDeco = 0;
-        while (selectedDeco == null){
-            idDeco = InputUtils.readInt("Choose the Decoration ID you want to delete: ");
-            int finalIdDeco = idDeco;
-            selectedDeco = decos.stream()
-                    .filter(decoration -> decoration.getId() == finalIdDeco)
-                    .findFirst()
-                    .orElse(null);
-            if (selectedDeco == null){
-                System.out.println("Invalid ID Decoration. Try again.");
-            }
-        }
-
-        itemDao.deleteItem(idDeco);
+    public void assignDecoToRoom(int idDeco, int idRoom){
+        itemDao.assignItemRoom(idDeco, idRoom);
     }
 
+
+    public void deleteItem(int id) {
+        itemDao.deleteItem(id);
+    }
 
 }

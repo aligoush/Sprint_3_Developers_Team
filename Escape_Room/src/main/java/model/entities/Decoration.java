@@ -26,6 +26,8 @@ public class Decoration extends Item {
         this.material = material;
     }
 
+
+
     @Override
     public String toString() {
         return "\nDecoration: " + super.toString() + ", material=" + material +
