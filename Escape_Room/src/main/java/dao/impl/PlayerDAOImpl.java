@@ -1,16 +1,16 @@
-package dao;
+package dao.impl;
 
-import enums.Thematic;
+import dao.MySQLConnection;
+import dao.PlayerDAO;
 import exceptions.PlayerAlreadyExistsException;
 import model.entities.Player;
-import model.entities.Room;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class PlayerDAOImpl implements PlayerDAO{
+public class PlayerDAOImpl implements PlayerDAO {
 
     @Override
     public List<Player> getAllPlayers(){

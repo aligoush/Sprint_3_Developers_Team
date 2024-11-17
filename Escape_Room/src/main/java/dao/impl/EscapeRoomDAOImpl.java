@@ -1,5 +1,7 @@
-package dao;
+package dao.impl;
 
+import dao.EscapeRoomDAO;
+import dao.MySQLConnection;
 import model.entities.EscapeRoom;
 
 import java.sql.*;

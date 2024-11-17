@@ -1,6 +1,6 @@
 package controllers;
 
-import dao.EscapeRoomDAOImpl;
+import dao.impl.EscapeRoomDAOImpl;
 import exceptions.NoAvailableCluesException;
 import exceptions.NoAvailableDecosException;
 import management.*;
@@ -67,11 +67,7 @@ public class EscapeRoomController {
         playerManager.showAllPlayers();
     }
 
-    public void addPlayerToRoom() {
-        playerManager.showAllPlayers();
-        int idPlayer = playerManager.getPlayerID();
-        roomManager.showAllRooms();
-        int idRoom = roomManager.getRoomID();
+    public void addPlayerToRoom(int idPlayer, int idRoom) {
         playerManager.assignPlayerToRoom(idPlayer, idRoom);
     }
 
@@ -93,11 +89,20 @@ public class EscapeRoomController {
         }
     }
 
-    public void createTicket() {
-        ticketManager.createTicket();
+    public void createTicket(int idPlayer, int idRoom) {
+        ticketManager.createTicket(idPlayer, idRoom);
     }
 
     public double getTotalTicketsPrice() {
         return ticketManager.getTotalTicketsPrice();
+    }
+
+    public void addPlayerAndCreateTicket() {
+        playerManager.showAllPlayers();
+        int idPlayer = playerManager.getPlayerID();
+        roomManager.showAllRooms();
+        int idRoom = roomManager.getRoomID();
+        addPlayerToRoom(idPlayer, idRoom);
+        createTicket(idPlayer, idRoom);
     }
 }

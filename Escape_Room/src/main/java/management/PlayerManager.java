@@ -1,9 +1,6 @@
 package management;
 
-import dao.ItemDAOImpl;
-import dao.PlayerDAO;
-import dao.PlayerDAOImpl;
-import model.entities.EscapeRoom;
+import dao.impl.PlayerDAOImpl;
 import model.entities.Player;
 import utils.InputUtils;
 

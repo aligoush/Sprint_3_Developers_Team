@@ -1,7 +1,7 @@
 package management;
 
 import model.entities.Ticket;
-import dao.TicketDAOImpl;
+import dao.impl.TicketDAOImpl;
 import utils.InputUtils;
 
 public class TicketManager {
@@ -21,12 +21,10 @@ public class TicketManager {
         return instance;
     }
 
-    public void createTicket(){
-        double totalPrice = InputUtils.readDouble("Total price: ");
-        int idPlayer = InputUtils.readInt("Id player: ");
+    public void createTicket(int idPlayer, int idRoom){
 
-        Ticket ticket=new Ticket(totalPrice, idPlayer);
-        ticketDAO.createTicket(ticket);
+        Ticket ticket = new Ticket(idPlayer);
+        ticketDAO.createTicket(ticket, idRoom);
 
     }
 

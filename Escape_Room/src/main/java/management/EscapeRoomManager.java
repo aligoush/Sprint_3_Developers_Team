@@ -1,8 +1,6 @@
 package management;
 
-import dao.EscapeRoomDAOImpl;
-import dao.ItemDAOImpl;
-import dao.RoomDAOImpl;
+import dao.impl.EscapeRoomDAOImpl;
 import model.entities.EscapeRoom;
 
 public class EscapeRoomManager {

@@ -1,6 +1,6 @@
 package management;
 
-import dao.RoomDAOImpl;
+import dao.impl.RoomDAOImpl;
 import enums.Thematic;
 import model.entities.EscapeRoom;
 import model.entities.Room;

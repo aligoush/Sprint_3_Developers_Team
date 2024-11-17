@@ -1,7 +1,7 @@
 package management;
 
-import dao.ItemDAOImpl;
-import dao.RoomDAOImpl;
+import dao.impl.ItemDAOImpl;
+import dao.impl.RoomDAOImpl;
 import enums.MaterialType;
 import enums.Thematic;
 import enums.Type;

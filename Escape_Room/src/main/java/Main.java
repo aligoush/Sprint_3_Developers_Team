@@ -1,7 +1,3 @@
-import dao.EscapeRoomDAOImpl;
-import dao.RoomDAOImpl;
-import model.entities.EscapeRoom;
-import model.entities.Room;
 import view.Menu;
 
 public class Main {

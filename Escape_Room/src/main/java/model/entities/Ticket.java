@@ -9,10 +9,17 @@ public class Ticket {
     private double totalPrice;
     private int idPlayer;
 
-    public Ticket(double totalPrice, int idPlayer) {
-        this.totalPrice = totalPrice;
+    public Ticket(int idPlayer) {
         this.saleDate = LocalDateTime.now();
         this.idPlayer=idPlayer;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public void setIdTicket(int idTicket){
+        this.idTicket = idTicket;
     }
 
     public int getIdTicket() {

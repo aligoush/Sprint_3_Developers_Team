@@ -1,5 +1,7 @@
-package dao;
+package dao.impl;
 
+import dao.MySQLConnection;
+import dao.RoomDAO;
 import enums.Thematic;
 import model.entities.Room;
 

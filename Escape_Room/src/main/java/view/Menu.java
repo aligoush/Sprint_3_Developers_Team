@@ -12,7 +12,6 @@ public class Menu {
         final EscapeRoomController controller = new EscapeRoomController();
         controller.createEscapeRoom();
         boolean exit = false;
-
         do {
             try {
                 switch (menu()) {
@@ -38,25 +37,25 @@ public class Menu {
                         controller.showAllPlayers();
                         break;
                     case 8:
-                        controller.showInventory();
-                        break;
-                    case 9:
                         controller.delete();
                         break;
+                    case 9:
+                        controller.showInventory();
+                        break;
                     case 10:
-                        controller.createTicket();
+                        controller.addPlayerAndCreateTicket();
                         break;
                     case 11:
                         controller.getTotalTicketsPrice();
                         break;
                     case 12:
-                        controller.addPlayerToRoom();
+
                         break;
                     case 13:
-                        method3();
+
                         break;
                     case 14:
-                        method3();
+                        //method3();
                         break;
                     case 0:
                         System.out.println("Finishing the program...");
@@ -74,7 +73,7 @@ public class Menu {
         Scanner entrada = new Scanner(System.in);
         byte option;
         final byte MINIMO = 0;
-        final byte MAXIMO = 14;
+        final byte MAXIMO = 13;
 
         do {
             System.out.println("\nMenu:");
@@ -84,14 +83,13 @@ public class Menu {
             System.out.println("4. Create decoration");
             System.out.println("5. Add decoration to the room");
             System.out.println("6. Create player");
-            System.out.println("7. Add player to the room");
-            System.out.println("8. Show players");
+            System.out.println("7. Show players");
+            System.out.println("8. Remove room or items");
             System.out.println("9. Show inventory");
-            System.out.println("10. Remove room or items");
-            System.out.println("11. Generate ticket");
-            System.out.println("12. Calculate total value of tickets");
-            System.out.println("13. Notify subscribed members");
-            System.out.println("14. Generate certificates of player");
+            System.out.println("10. Add player to the game and generate ticket");
+            System.out.println("11. Calculate total value of tickets");
+            System.out.println("12. Notify subscribed members");
+            System.out.println("13. Generate certificates of player");
 
             option = entrada.nextByte();
             if (option < MINIMO || option > MAXIMO) {
@@ -100,24 +98,6 @@ public class Menu {
         } while (option < MINIMO || option > MAXIMO);
         return option;
     }
-
-    public static void createRoom() {
-            /*RoomService holi = new RoomService();
-
-            holi.createRoom();
-*/
-
-    }
-
-    public static void method2() {
-        System.out.println("Method 2");
-    }
-
-    public static void method3() {
-        System.out.println("Method 3");
-    }
-
-
 }
 
 

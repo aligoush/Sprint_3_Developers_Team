@@ -1,5 +1,7 @@
-package dao;
+package dao.impl;
 
+import dao.ItemDAO;
+import dao.MySQLConnection;
 import enums.MaterialType;
 import enums.Thematic;
 import enums.Type;
