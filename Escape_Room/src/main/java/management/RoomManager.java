@@ -6,12 +6,13 @@ import exceptions.NoAvailableDecosException;
 import exceptions.NoAvailableRoomsException;
 import model.entities.EscapeRoom;
 import model.entities.Room;
+import observer.Subject;
 import utils.InputUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RoomManager {
+public class RoomManager implements Subject {
 
     private static RoomManager instance;
     private RoomDAOImpl roomDao;
@@ -39,6 +40,7 @@ public class RoomManager {
         double price = InputUtils.readDouble("Price of the room: ");
         Room newRoom = new Room(id,name,thematic, difficulty, price, escapeRoom.getIdEscapeRoom());
         roomDao.createRoom(newRoom);
+        notifyObservers("New room created:  " + name);
     }
 
     public List<Integer> getAllRoomsID(){

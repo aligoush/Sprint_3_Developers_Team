@@ -1,63 +1,63 @@
 package view;
 
 import controllers.EscapeRoomController;
-import exceptions.NoAvailableCluesException;
-import exceptions.NoAvailableDecosException;
 
 import java.util.Scanner;
 
 public class Menu {
 
-    public static void startMenu(){
+    public static void startMenu() {
         final EscapeRoomController controller = new EscapeRoomController();
         controller.createEscapeRoom();
         boolean exit = false;
         do {
-                switch (menu()) {
-                    case 1:
-                        controller.createRoom();
-                        break;
-                    case 2:
-                        controller.createClue();
-                        break;
-                    case 3:
-                        controller.addClueToRoom();
-                        break;
-                    case 4:
-                        controller.createDecoration();
-                        break;
-                    case 5:
-                        controller.addDecoToRoom();
-                        break;
-                    case 6:
-                        controller.createPlayer();
-                        break;
-                    case 7:
-                        controller.showAllPlayers();
-                        break;
-                    case 8:
-                        controller.delete();
-                        break;
-                    case 9:
-                        controller.showInventory();
-                        break;
-                    case 10:
-                        controller.addPlayerAndCreateTicket();
-                        break;
-                    case 11:
-                        controller.getTotalTicketsPrice();
-                        break;
-                    case 12:
-
-                        break;
-                    case 13:
-
-                        break;
-                    case 0:
-                        System.out.println("Finishing the program...");
-                        exit = true;
-                        break;
-                }
+            switch (menu()) {
+                case 1:
+                    controller.createRoom();
+                    break;
+                case 2:
+                    controller.createClue();
+                    break;
+                case 3:
+                    controller.addClueToRoom();
+                    break;
+                case 4:
+                    controller.createDecoration();
+                    break;
+                case 5:
+                    controller.addDecoToRoom();
+                    break;
+                case 6:
+                    controller.createPlayer();
+                    break;
+                case 7:
+                    controller.showAllPlayers();
+                    break;
+                case 8:
+                    controller.delete();
+                    break;
+                case 9:
+                    controller.showInventory();
+                    break;
+                case 10:
+                    controller.addPlayerAndCreateTicket();
+                    break;
+                case 11:
+                    controller.getTotalTicketsPrice();
+                    break;
+                case 12:
+                    controller.notifySubscribers();
+                    break;
+                case 13:
+                    controller.createCertificate();
+                    break;
+                case 14:
+                    controller.assignCertificate();
+                case 0:
+                    System.out.println("Finishing the program...");
+                    exit = true;
+                    break;
+            }
         } while (!exit);
     }
 
@@ -65,7 +65,7 @@ public class Menu {
         Scanner entrada = new Scanner(System.in);
         byte option;
         final byte MINIMO = 0;
-        final byte MAXIMO = 13;
+        final byte MAXIMO = 14;
 
         do {
             System.out.println("\nMenu:");
@@ -82,6 +82,7 @@ public class Menu {
             System.out.println("11. Calculate total value of tickets");
             System.out.println("12. Notify subscribed members");
             System.out.println("13. Generate certificates of player");
+            System.out.println("14. Asign certificate to a player");
 
             option = entrada.nextByte();
             if (option < MINIMO || option > MAXIMO) {
@@ -91,7 +92,6 @@ public class Menu {
         return option;
     }
 }
-
 
 
 //notify subscribed members (observer o callback)

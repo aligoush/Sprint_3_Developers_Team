@@ -1,19 +1,21 @@
 package controllers;
 
-import dao.impl.EscapeRoomDAOImpl;
 import enums.Thematic;
 import exceptions.*;
 import management.*;
 import model.entities.EscapeRoom;
+import observer.Subject;
 import utils.InputUtils;
 
-public class EscapeRoomController {
+public class EscapeRoomController implements Subject {
     private EscapeRoom escapeRoom;
     private final RoomManager roomManager;
     private ItemManager itemManager;
     private PlayerManager playerManager;
     private TicketManager ticketManager;
     private EscapeRoomManager escapeRoomManager;
+    private CertificateManager certificateManager;
+
 
     public EscapeRoomController() {
         this.escapeRoom = EscapeRoom.getInstance();
@@ -22,6 +24,8 @@ public class EscapeRoomController {
         this.itemManager = ItemManager.getInstance(this.roomManager);
         this.playerManager = PlayerManager.getInstance();
         this.ticketManager = TicketManager.getInstance();
+        this.certificateManager = CertificateManager.getInstance();
+
     }
 
     public void createEscapeRoom() {
@@ -70,10 +74,10 @@ public class EscapeRoomController {
         boolean isEmpty = true;
 
         try {
-            try{
+            try {
                 roomManager.showAllRooms();
                 isEmpty = false;
-            } catch (NoAvailableRoomsException e){
+            } catch (NoAvailableRoomsException e) {
                 System.out.println(e.getMessage());
             }
 
@@ -95,7 +99,7 @@ public class EscapeRoomController {
                 System.out.println(e.getMessage());
             }
 
-            if(isEmpty){
+            if (isEmpty) {
                 throw new EmptyInventoryException("There are no elements in the inventory.");
             }
 
@@ -111,7 +115,7 @@ public class EscapeRoomController {
     public void showAllPlayers() {
         try {
             playerManager.showAllPlayers();
-        } catch (NoAvailablePlayersException e){
+        } catch (NoAvailablePlayersException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -158,15 +162,35 @@ public class EscapeRoomController {
     }
 
     public void addPlayerAndCreateTicket() {
-        try{
+        try {
             playerManager.showAllPlayers();
             int idPlayer = playerManager.getPlayerID();
             roomManager.showAllRooms();
             int idRoom = roomManager.getRoomID();
             int idTicket = createTicket(idPlayer, idRoom);
             addPlayerToRoom(idPlayer, idRoom, idTicket);
-        } catch (NoAvailablePlayersException | NoAvailableRoomsException e){
+        } catch (NoAvailablePlayersException | NoAvailableRoomsException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void notifySubscribers() {
+        String message = InputUtils.readString("Enter the notification message: ");
+
+
+        notifyObservers(message);
+        System.out.println("Notification sent to all subscribed players.");
+
+
+    }
+
+    public void createCertificate() {
+        certificateManager.createCertificate();
+    }
+
+    public void assignCertificate() {
+        int idPlayer = InputUtils.readInt("Introduce the ID of the player: ");
+        int id_certificate = InputUtils.readInt("Enter the ID of the achievement: ");
+        certificateManager.assignCertificateToPlayer(id_certificate, idPlayer);
     }
 }

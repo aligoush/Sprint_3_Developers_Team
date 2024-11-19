@@ -7,57 +7,69 @@ import enums.Thematic;
 import enums.Type;
 import exceptions.NoAvailableCluesException;
 import exceptions.NoAvailableDecosException;
-import model.entities.*;
+import factories.AssetFactory;
+import factories.DefaultAssetFactory;
+import model.entities.Clue;
+import model.entities.Decoration;
+import model.entities.EscapeRoom;
+import observer.Subject;
 import utils.InputUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ItemManager {
+public class ItemManager implements Subject {
     private static ItemManager instance;
     private ItemDAOImpl itemDao;
     private RoomDAOImpl roomDao;
     private EscapeRoom escapeRoom;
     private RoomManager roomManager;
+    private AssetFactory assetFactory;
 
-    private ItemManager(RoomManager roomManager){
+    private ItemManager(RoomManager roomManager, AssetFactory assetFactory) {
         this.itemDao = new ItemDAOImpl();
         this.roomDao = new RoomDAOImpl();
         this.roomManager = roomManager;
+        this.assetFactory = assetFactory;
     }
 
-    public static ItemManager getInstance(RoomManager roomManager){
-        if(instance == null){
-            instance = new ItemManager(roomManager);
+    public static ItemManager getInstance(RoomManager roomManager) {
+        if (instance == null) {
+            instance = new ItemManager(roomManager, new DefaultAssetFactory());
         }
         return instance;
     }
 
-    public void createClue(){
+    public void createClue() {
+
         String name = InputUtils.readString("Name of the clue: ");
         double price = InputUtils.readDouble("Price of the clue: ");
         Type type = Type.CLUE;
         int id = 1;
         Thematic thematic = InputUtils.readEnum("Choose thematic: ", Thematic.class);
         String details = InputUtils.readString("Define details of the clue: ");
-        Clue clue = new Clue(id, name, price,  type,  thematic, details);
+        Clue clue = assetFactory.createClue(id, name, price, type, thematic, details);
+
+        /*Clue clue = new Clue(id, name, price,  type,  thematic, details);*/
         itemDao.create(clue);
+        notifyObservers("New clue created: " + name);
     }
 
-    public void createDecoration(){
+    public void createDecoration() {
         String name = InputUtils.readString("Name of the decoration: ");
         double price = InputUtils.readDouble("Price of the decoration: ");
         Type type = Type.DECORATION;
         int id = 1;
         MaterialType material = InputUtils.readEnum("Choose material: ", MaterialType.class);
-        Decoration decoration = new Decoration(id, name, price, type, material);
+        Decoration decoration = assetFactory.createDecoration(id,name,price,type,material);
+        /*Decoration decoration = new Decoration(id, name, price, type, material);*/
         itemDao.create(decoration);
     }
 
     public void showAllClues() throws NoAvailableCluesException {
         System.out.println("Clues in the DB:");
         List<Clue> clues = itemDao.getAllClues();
-        if (clues.isEmpty()){
+        if (clues.isEmpty()) {
             throw new NoAvailableCluesException("There are no clues in the DB. Please, create a new one.");
         }
         for (Clue clue : clues) {
@@ -68,7 +80,7 @@ public class ItemManager {
     public void showAvailableClues() throws NoAvailableCluesException {
         System.out.println("Clues in the DB with idRoom(NULL):");
         List<Clue> clues = itemDao.getAvailableClues();
-        if (clues.isEmpty()){
+        if (clues.isEmpty()) {
             throw new NoAvailableCluesException("There are no available clues in the DB.");
         }
         for (Clue clue : clues) {
@@ -79,10 +91,10 @@ public class ItemManager {
     public void showAllDecos() throws NoAvailableDecosException {
         System.out.println("Decorations in the DB:");
         List<Decoration> decos = itemDao.getAllDecos();
-        if (decos.isEmpty()){
+        if (decos.isEmpty()) {
             throw new NoAvailableDecosException("There are no decorations in the DB. Please, create a new one.");
         }
-        for (Decoration decoration: decos) {
+        for (Decoration decoration : decos) {
             System.out.println(decoration);
         }
     }
@@ -91,7 +103,7 @@ public class ItemManager {
     public void showAvailableDecos() throws NoAvailableDecosException {
         System.out.println("Decorations in the DB with idRoom(NULL):");
         List<Decoration> decos = itemDao.getAvailableDecos();
-        if (decos.isEmpty()){
+        if (decos.isEmpty()) {
             throw new NoAvailableDecosException("There are no available decorations in the DB.");
         }
         for (Decoration decoration : decos) {
@@ -108,7 +120,7 @@ public class ItemManager {
     public List<Integer> getAllCluesID() {
         List<Clue> clues = itemDao.getAllClues();
         List<Integer> cluesIds = new ArrayList<>();
-        for (Clue clue : clues){
+        for (Clue clue : clues) {
             cluesIds.add(clue.getId());
         }
         return cluesIds;
@@ -123,7 +135,7 @@ public class ItemManager {
     public List<Integer> getAvailableCluesID() {
         List<Clue> clues = itemDao.getAvailableClues();
         List<Integer> cluesIds = new ArrayList<>();
-        for(Clue clue : clues){
+        for (Clue clue : clues) {
             cluesIds.add(clue.getId());
         }
         return cluesIds;
@@ -143,7 +155,7 @@ public class ItemManager {
     public List<Integer> getAllDecosID() {
         List<Decoration> decos = itemDao.getAllDecos();
         List<Integer> decosIds = new ArrayList<>();
-        for (Decoration decoration : decos){
+        for (Decoration decoration : decos) {
             decosIds.add(decoration.getId());
         }
         return decosIds;
@@ -158,17 +170,17 @@ public class ItemManager {
     public List<Integer> getAvailableDecosID() {
         List<Decoration> decos = itemDao.getAvailableDecos();
         List<Integer> decosIds = new ArrayList<>();
-        for(Decoration decoration : decos){
+        for (Decoration decoration : decos) {
             decosIds.add(decoration.getId());
         }
         return decosIds;
     }
 
-    public void assignClueToRoom(int idClue, int idRoom){
+    public void assignClueToRoom(int idClue, int idRoom) {
         itemDao.assignItemRoom(idClue, idRoom);
     }
 
-    public void assignDecoToRoom(int idDeco, int idRoom){
+    public void assignDecoToRoom(int idDeco, int idRoom) {
         itemDao.assignItemRoom(idDeco, idRoom);
     }
 

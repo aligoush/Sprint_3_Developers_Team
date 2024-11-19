@@ -1,6 +1,9 @@
 package model.entities;
 
-public class Player {
+import observer.Observer;
+import observer.Subject;
+
+public class Player implements Observer {
 
     private int idPlayer;
     private String name;
@@ -14,7 +17,7 @@ public class Player {
         this.email = email;
     }
 
-    public boolean isSubscription() {
+    public boolean isSubscribed() {
         return subscription;
     }
 
@@ -48,6 +51,10 @@ public class Player {
 
     public void setSubscription(boolean subscription) {
         this.subscription = subscription;
+    }
+
+    public void update(String message){
+        System.out.println("Player"+ name + " recieved the notification "+ message);
     }
 
     @Override
