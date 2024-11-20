@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08254954-1aa7-4e2d-9b7e-c2b21045ac07" name="Changes" comment="merge dev into main">
-      <change afterPath="$PROJECT_DIR$/Escape_Room/src/Passsword.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BD/DB_escape_v4.mwb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BD/DB_escape_v4.mwb.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BD/DB_escape_v4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BD/DB_escape_v4.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/MySQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/Escape_Room/src/main/java/dao/MySQLConnection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +40,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/aligoush/Sprint_3_Developers_Team&quot;,
-    &quot;accountId&quot;: &quot;ee55d317-4e66-4e8e-a228-aaee87408101&quot;
+    &quot;url&quot;: &quot;https://github.com/aligoush/Sprint_3_Developers_Team.git&quot;,
+    &quot;accountId&quot;: &quot;fd559aac-4bae-4de7-8529-4f45c002a709&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -51,18 +55,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/alien/Desktop/DEV/IT_ACADEMY_JAVA/Sprint_3_Developers_Team/Escape_Room&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Main.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "dev",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/pauma/Documents/GitHub/Curs Java IT Academy/3.3-Patterns.Developers_Team"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
