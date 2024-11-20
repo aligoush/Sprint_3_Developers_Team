@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08254954-1aa7-4e2d-9b7e-c2b21045ac07" name="Changes" comment="merge dev into main">
-      <change afterPath="$PROJECT_DIR$/Escape_Room/src/Passsword.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,8 +35,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/aligoush/Sprint_3_Developers_Team&quot;,
-    &quot;accountId&quot;: &quot;ee55d317-4e66-4e8e-a228-aaee87408101&quot;
+    &quot;url&quot;: &quot;https://github.com/aligoush/Sprint_3_Developers_Team.git&quot;,
+    &quot;accountId&quot;: &quot;fd559aac-4bae-4de7-8529-4f45c002a709&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -57,10 +56,11 @@
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/alien/Desktop/DEV/IT_ACADEMY_JAVA/Sprint_3_Developers_Team/Escape_Room&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/pauma/Documents/GitHub/Curs Java IT Academy/3.3-Patterns.Developers_Team&quot;
   }
 }</component>
   <component name="RunManager">
@@ -70,6 +70,17 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="3.3-Patterns.Developers_Team" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="3.3-Patterns.Developers_Team" />
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
